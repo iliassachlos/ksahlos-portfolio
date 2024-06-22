@@ -10,18 +10,15 @@ function Footer() {
             display='flex'
             justifyContent='center'
             alignItems='center'
-            sx={{ height: { xs: '44px', xl: '64px' } }}
             bgcolor='white'
-            zIndex={90}
+            sx={{ height: { xs: '44px', xl: '64px' } }}
         >
-            {/* Social Media Icons on the left */}
-            <Box display='flex' alignItems='center'>
+            <Box display='flex' position='absolute' alignItems='center' sx={{ left: { xs: 0, md: 35, xl: 50 } }}>
                 <SocialMediaBox />
             </Box>
 
             <Stack direction='row' alignItems='center' justifyContent='center' width='100%'>
-                {/* Centered Text */}
-                <Box display='flex' justifyContent='center' alignItems='center' mr={9}>
+                <Box display='flex' justifyContent='center' alignItems='center' >
                     <Typography fontWeight={500} align='center' sx={{ fontSize: { xs: '9px', md: '10px' } }}>
                         © {currentYear} Konstantinos Sahlos. All Rights Reserved
                     </Typography>

@@ -17,7 +17,7 @@ function SocialMediaBox() {
                     },
                 }}
             >
-                <FacebookIcon fontSize='small' />
+                <FacebookIcon/>
             </IconButton>
             <IconButton
                 disableRipple
@@ -30,7 +30,7 @@ function SocialMediaBox() {
                     },
                 }}
             >
-                <InstagramIcon fontSize='small' />
+                <InstagramIcon />
             </IconButton>
         </Stack>
     );

@@ -5,9 +5,9 @@ function RightBorder() {
         <Box
             sx={{
                 width: { xs: 0, md: '44px', xl: '60px' },
-                flexShrink: 0, // Ensure it doesn't shrink when screen size changes
+                flexShrink: 0,
                 zIndex: 80,
-                position: 'fixed', // Keep it fixed on the right side
+                position: 'fixed',
                 top: 0,
                 bottom: 0,
                 right: 0,

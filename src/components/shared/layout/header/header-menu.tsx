@@ -44,6 +44,7 @@ function HeaderMenu() {
             width='100%'
             bgcolor='rgba(255,255,255,0.8)'
             overflow='hidden'
+            sx={{ backdropFilter: 'blur(16px)' }}
         >
             <Box justifyContent='center' alignItems='center' textAlign='center'>
                 {navigationData.map((item) => (

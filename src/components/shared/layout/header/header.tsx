@@ -24,6 +24,7 @@ function Header() {
             bgcolor='white'
             position='relative'
             width='100%'
+            zIndex={100}
             sx={{ height: { xs: '44px', xl: '64px' } }}
         >
             {/* Ksahlos Logo */}
@@ -32,6 +33,7 @@ function Header() {
                     display='flex'
                     justifyContent='center'
                     alignItems='center'
+                    mt='7px'
                     sx={{
                         '&:hover': {
                             cursor: 'pointer',

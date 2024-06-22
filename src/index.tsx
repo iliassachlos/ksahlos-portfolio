@@ -18,20 +18,47 @@ root.render(
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BrowserRouter>
-                {/* Application Layout */}
-                    <Box display='flex' flexDirection='column' minHeight='100vh'>
-                        <LeftBorder />
+                    <Box
+                        display='flex'
+                        flexDirection='column'
+                        minHeight='100vh'
+                        position='relative' // Ensure relative positioning for borders
+                    >
+                        <Header />
                         <Box
                             display='flex'
-                            flexDirection='column'
                             flexGrow={1}
-                            sx={{ ml: { xs: 0, md: '44px', xl: '60px' }, mr: { xs: 0, md: '44px', xl: '60px' } }}
+                            sx={{
+                                position: 'relative', // Ensure relative positioning for main content
+                                overflow: 'hidden', // Hide overflow to prevent unnecessary scrollbars
+                            }}
                         >
-                            <Header />
-                            <App />
+                            <LeftBorder />
+                            <Box
+                                display='flex'
+                                flexDirection='column'
+                                flexGrow={1}
+                                sx={{
+                                    ml: { xs: 0, md: '44px', xl: '60px' },
+                                    mr: { xs: 0, md: '44px', xl: '60px' },
+                                }}
+                            >
+                                <App />
+                            </Box>
+                            <RightBorder />
+                        </Box>
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                zIndex: 90,
+                                mt: { xs: '44px', xl: '64px' }, // Adjust margin-top to clear the borders
+                            }}
+                        >
                             <Footer />
                         </Box>
-                        <RightBorder />
                     </Box>
                 </BrowserRouter>
             </ThemeProvider>
