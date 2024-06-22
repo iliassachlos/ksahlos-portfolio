@@ -18,46 +18,24 @@ root.render(
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BrowserRouter>
-                    <Box
-                        display='flex'
-                        flexDirection='column'
-                        minHeight='100vh'
-                        position='relative' // Ensure relative positioning for borders
-                    >
-                        <Header />
+                    <Box display='flex' flexDirection='row' minHeight='100vh'>
+                        <LeftBorder />
                         <Box
                             display='flex'
-                            flexGrow={1}
-                            sx={{
-                                position: 'relative', // Ensure relative positioning for main content
-                                overflow: 'hidden', // Hide overflow to prevent unnecessary scrollbars
-                            }}
+                            flexDirection='column'
+                            width='100%'
+                            sx={{ ml: { xs: 0, md: '44px', xl: '60px' }, mr: { xs: 0, md: '44px', xl: '60px' } }}
                         >
-                            <LeftBorder />
-                            <Box
-                                display='flex'
-                                flexDirection='column'
-                                flexGrow={1}
-                                sx={{
-                                    ml: { xs: 0, md: '44px', xl: '60px' },
-                                    mr: { xs: 0, md: '44px', xl: '60px' },
-                                }}
-                            >
+                            <Box position='sticky' top={0} zIndex={50}>
+                                <Header />
+                            </Box>
+                            <Box flexGrow={1}>
                                 <App />
                             </Box>
-                            <RightBorder />
                         </Box>
-                        <Box
-                            sx={{
-                                position: 'absolute',
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                zIndex: 90,
-                                mt: { xs: '44px', xl: '64px' }, // Adjust margin-top to clear the borders
-                            }}
-                        >
-                            <Footer />
+                        <RightBorder />
+                        <Box position='fixed' bottom={0} zIndex={50} width='100%'>
+                        <Footer />
                         </Box>
                     </Box>
                 </BrowserRouter>

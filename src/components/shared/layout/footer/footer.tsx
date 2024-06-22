@@ -18,7 +18,7 @@ function Footer() {
             </Box>
 
             <Stack direction='row' alignItems='center' justifyContent='center' width='100%'>
-                <Box display='flex' justifyContent='center' alignItems='center' >
+                <Box display='flex' justifyContent='center' alignItems='center'>
                     <Typography fontWeight={500} align='center' sx={{ fontSize: { xs: '9px', md: '10px' } }}>
                         © {currentYear} Konstantinos Sahlos. All Rights Reserved
                     </Typography>

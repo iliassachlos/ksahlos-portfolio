@@ -8,7 +8,7 @@ function SocialMediaBox() {
         <Stack direction='row'>
             <IconButton
                 disableRipple
-                color='secondary'
+                color='primary'
                 sx={{
                     '&:hover': {
                         color: blue[500],
@@ -17,11 +17,11 @@ function SocialMediaBox() {
                     },
                 }}
             >
-                <FacebookIcon/>
+                <FacebookIcon />
             </IconButton>
             <IconButton
                 disableRipple
-                color='secondary'
+                color='primary'
                 sx={{
                     '&:hover': {
                         color: purple[500],
