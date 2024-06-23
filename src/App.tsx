@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home-page';
 import NotFoundPage from "./pages/not-found-page";
 import AboutPage from "./pages/about-page";
+import PricingPage from "./pages/pricing-page";
 
 function App() {
     return (
@@ -9,7 +10,7 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/about' element={<AboutPage />} />
             {/* <Route path='/contact' element={<ContactPage />} /> */}
-            {/* <Route path='/pricing' element={<PricingPage />} /> */}
+            <Route path='/pricing' element={<PricingPage />} />
 
             {/* <Route path='/login' element={<LoginPage />} /> */}
             {/* <Route path='/admin' element={<AdminPanelPage />} /> */}

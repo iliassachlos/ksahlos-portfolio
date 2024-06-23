@@ -4,6 +4,7 @@ import AchievementsBlock from '../components/about/achievements-block';
 import QuoteBlock from '../components/about/quote-block';
 
 function AboutPage() {
+    
     return (
             <Grid container display='flex' justifyContent='center' alignItems='center' height='100%' p={1}>
                 <Grid item xs={12} md={12} lg={4}>
