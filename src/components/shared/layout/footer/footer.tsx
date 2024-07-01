@@ -12,6 +12,7 @@ function Footer() {
             alignItems='center'
             bgcolor='white'
             sx={{ height: { xs: '44px', xl: '64px' } }}
+            zIndex={80}
         >
             <Box display='flex' position='absolute' alignItems='center' sx={{ left: { xs: 0, md: 35, xl: 50 } }}>
                 <SocialMediaBox />

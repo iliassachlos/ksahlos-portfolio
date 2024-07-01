@@ -19,7 +19,7 @@ function HomePage() {
                             Fine - Art Photography
                         </Typography>
                         <Box textAlign='center' fontStyle='italic' color='white' fontSize={12} fontWeight={500}>
-                            <TypeAnimation sequence={['A stylish world through my lens']} speed={30} cursor={false} />
+                            <TypeAnimation sequence={['Timeless steps beyond reality']} speed={30} cursor={false} />
                         </Box>
                     </Stack>
                 </Box>

@@ -7,7 +7,7 @@ interface AchievementsBlockProps {
 function AchievementsBlock({ minHeight }: AchievementsBlockProps) {
     return (
         <Box height='100%' width='auto' display='flex' justifyContent='center' alignItems='center'>
-            <Paper elevation={0} sx={{ height: '100%', width: 'auto', p: { xs: 4, xl: 7 }, minHeight }}>
+            <Paper elevation={2} sx={{ height: '100%', width: 'auto', p: { xs: 4, xl: 7 }, minHeight }}>
                 <Stack
                     direction='column'
                     fontSize={14}

@@ -29,13 +29,13 @@ root.render(
                             <Box position='sticky' top={0} zIndex={50}>
                                 <Header />
                             </Box>
-                            <Box flexGrow={1}>
+                            <Box flexGrow={1} mb={{ md: 4, xl: 6 }}>
                                 <App />
                             </Box>
                         </Box>
                         <RightBorder />
                         <Box position='fixed' bottom={0} zIndex={50} width='100%'>
-                        <Footer />
+                            <Footer />
                         </Box>
                     </Box>
                 </BrowserRouter>
