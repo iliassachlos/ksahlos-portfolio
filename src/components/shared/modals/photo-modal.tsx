@@ -1,5 +1,5 @@
 // /src/components/shared/modals/photo-modal.tsx
-import { Box, IconButton, Modal, Stack, Typography } from '@mui/material';
+import { Box, IconButton, Modal, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { RootState } from '../../../state/store';
@@ -29,15 +29,20 @@ function PhotoModal() {
     const isPhotoModalOpen: boolean = useSelector((state: RootState) => state.photoModal.isOpen);
     const selectedItem: IPhoto | undefined = useSelector((state: RootState) => state.photoModal.selectedItem);
 
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+    // Handles closing the modal and resetting selected item
     function closeModalHandler() {
         dispatch(setIsPhotoModalOpen(false));
         dispatch(setPhotoModalSelectedItem(undefined));
     }
 
+    // Adjusts image object-fit based on natural dimensions
     function handleImageLoad(event: React.SyntheticEvent<HTMLImageElement>) {
         const { naturalWidth, naturalHeight } = event.currentTarget;
         if (naturalWidth > naturalHeight) {
-            setObjectFit('cover');
+            setObjectFit(isSmallScreen ? 'contain' : 'cover');
         } else {
             setObjectFit('contain');
         }
@@ -57,8 +62,9 @@ function PhotoModal() {
         >
             <Box position='relative' sx={style} data-testid='photo-modal'>
                 <Box position='absolute' top={0} right={0}>
-                    <IconButton onClick={closeModalHandler}>
-                        <CloseIcon />
+                    {/* Close button for modal */}
+                    <IconButton onClick={closeModalHandler} color='primary' disableRipple>
+                        <CloseIcon sx={{ backgroundColor: 'rgba(255,255,255,0.4)', borderRadius: '4px', p: '1px' }} />
                     </IconButton>
                 </Box>
                 {selectedItem && (
@@ -71,6 +77,7 @@ function PhotoModal() {
                             height='calc(100% - 40px)'
                             width='100%'
                         >
+                            {/* Displaying selected image */}
                             <img
                                 src={selectedItem.url}
                                 alt={selectedItem.title}
@@ -83,13 +90,8 @@ function PhotoModal() {
                                 onLoad={handleImageLoad}
                             />
                         </Box>
-                        <Box
-                            width='100%'
-                            bgcolor='white'
-                            py={1}
-                            gap={2}
-                            borderRadius='4px'
-                        >
+                        {/* Displaying image title and image number */}
+                        <Box width='100%' bgcolor='white' py={1} gap={2} borderRadius='4px'>
                             <Stack display='flex' justifyContent='center' alignItems='center' direction='row'>
                                 <Typography>{selectedItem.title}</Typography>
                                 {user && (

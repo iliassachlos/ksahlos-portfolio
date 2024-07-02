@@ -6,27 +6,25 @@ import Spinner from '../../components/shared/spinner';
 import InfoAlert from '../../components/shared/alerts/info-alert';
 import MasonryGrid from '../../components/shared/masonry-grid';
 
-function EscapePage() {
+function EtherialPagεe() {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const { fetchData } = useFirebase();
 
     const category: string = 'fine-art';
-    const subCategory: string = 'escape';
+    const subCategory: string = 'etherial';
 
     useEffect(() => {
-        fetchEscapePhotos();
+        fetchEtherialPhotos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    async function fetchEscapePhotos() {
+    async function fetchEtherialPhotos() {
         const data = await fetchData(category, subCategory);
         setPhotos(data);
         setIsLoading(false);
     }
-
-    console.log('Escape', photos);
 
     return (
         <Container maxWidth='xl'>
@@ -43,4 +41,4 @@ function EscapePage() {
     );
 }
 
-export default EscapePage;
+export default EtherialPagεe;
