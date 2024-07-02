@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface HeaderState {
+export interface IHeaderState {
     isHamburgerIconOpen: boolean;
     isMenuOpen: boolean;
 }
 
-const initialState: HeaderState = {
+const initialState: IHeaderState = {
     isHamburgerIconOpen: false,
     isMenuOpen: false,
 };

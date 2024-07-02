@@ -5,9 +5,10 @@ import AboutPage from './pages/about-page';
 import PricingPage from './pages/pricing-page';
 import ContactPage from './pages/contact-page';
 import EscapePage from './pages/fine-art/escape-page';
-import EtherialPage from "./pages/fine-art/etherial-page";
-import IllusionPage from "./pages/fine-art/illusion-page";
-
+import EtherialPage from './pages/fine-art/etherial-page';
+import IllusionPage from './pages/fine-art/illusion-page';
+import LoginPage from './pages/login-page';
+import AdminpanelPage from './pages/admin-page';
 
 function App() {
     return (
@@ -17,8 +18,8 @@ function App() {
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/pricing' element={<PricingPage />} />
 
-            {/* <Route path='/login' element={<LoginPage />} /> */}
-            {/* <Route path='/admin' element={<AdminPanelPage />} /> */}
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/admin' element={<AdminpanelPage />} />
 
             <Route path='/fine-art/escape' element={<EscapePage />} />
             <Route path='/fine-art/illusion' element={<IllusionPage />} />
