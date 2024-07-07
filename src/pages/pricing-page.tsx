@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import PricingBox from '../components/pricing/pricing-box';
 
 function PricingPage() {
@@ -13,6 +13,7 @@ function PricingPage() {
             p={1}
         >
             <PricingBox />
+            <Typography fontSize={14}>Above prices do not include VAT 24%, and shipping costs</Typography>
         </Box>
     );
 }

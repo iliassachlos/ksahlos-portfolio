@@ -9,6 +9,7 @@ import EtherialPage from './pages/fine-art/etherial-page';
 import IllusionPage from './pages/fine-art/illusion-page';
 import LoginPage from './pages/login-page';
 import AdminpanelPage from './pages/admin-page';
+import ExhibitsPage from './pages/exhibits-page';
 
 function App() {
     return (
@@ -24,6 +25,8 @@ function App() {
             <Route path='/fine-art/escape' element={<EscapePage />} />
             <Route path='/fine-art/illusion' element={<IllusionPage />} />
             <Route path='/fine-art/etherial' element={<EtherialPage />} />
+            <Route path='/exhibits' element={<ExhibitsPage />} />
+
             {/* <Route path='/fine-art/essential' element={<EssentialPage />} /> */}
             {/* <Route path='/local-art' element={<LocalArtPage />} errorElement={<NotFoundPage />} /> */}
 

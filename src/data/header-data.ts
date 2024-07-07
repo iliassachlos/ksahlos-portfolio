@@ -3,40 +3,44 @@ import { IHeaderData } from '../interfaces/global.interface';
 
 export const navigationData: IHeaderData[] = [
     {
-        title: "Home",
-        url: "/",
+        title: 'Home',
+        url: '/',
     },
     {
-        title: "About",
-        url: "/about",
+        title: 'About',
+        url: '/about',
     },
     {
-        title: "Fine Art",
+        title: 'Fine Art',
         submenu: [
             {
-                title: "Etherial",
-                url: "/fine-art/etherial",
+                title: 'Etherial',
+                url: '/fine-art/etherial',
             },
             {
-                title: "Illusion",
-                url: "/fine-art/illusion"
+                title: 'Illusion',
+                url: '/fine-art/illusion',
             },
             {
-                title: "Essential",
-                url: "/fine-art/essential"
+                title: 'Essential',
+                url: '/fine-art/essential',
             },
             {
-                title: "Escape",
-                url: "/fine-art/escape",
+                title: 'Escape',
+                url: '/fine-art/escape',
             },
         ],
     },
     {
-        title: "Pricing",
-        url: "/pricing",
+        title: 'Pricing',
+        url: '/pricing',
     },
     {
-        title: "Contact",
-        url: "/contact",
+        title: 'Contact',
+        url: '/contact',
+    },
+    {
+        title: 'Exhibits',
+        url: '/exhibits',
     },
 ];

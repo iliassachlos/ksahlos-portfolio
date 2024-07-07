@@ -4,7 +4,7 @@ import { orange } from '@mui/material/colors';
 function PricingBox() {
     return (
         <Container>
-            <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='center' alignItems='center'>
+            <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='center' alignItems='center' mb={2}>
                 {/* Box 1 */}
                 <Box px={{ md: 1, xl: 2 }} py={{ xs: 1 }}>
                     <Paper elevation={2} sx={{ width: { xs: '340px', md: '240px' }, py: 2 }}>
@@ -14,7 +14,7 @@ function PricingBox() {
                             </Typography>
                             <Divider orientation='horizontal' flexItem />
                             <Typography textAlign='center' fontSize='14px'>
-                                (60€)
+                                (<span style={{ fontSize: 12 }}>from</span> 60€)
                             </Typography>
                             <Typography
                                 textAlign='center'
@@ -59,7 +59,7 @@ function PricingBox() {
                             </Typography>
                             <Divider orientation='horizontal' flexItem />
                             <Typography textAlign='center' fontSize='14px'>
-                                (120€)
+                                (<span style={{ fontSize: 12 }}>from</span> 120€)
                             </Typography>
                             <Typography
                                 textAlign='center'
@@ -103,8 +103,8 @@ function PricingBox() {
                                 Fine Art Prints
                             </Typography>
                             <Divider orientation='horizontal' flexItem />
-                            <Typography textAlign='center' fontSize='14px' fontWeight={500}>
-                                (150€)
+                            <Typography textAlign='center' fontSize='14px'>
+                                (<span style={{ fontSize: 12 }}>from</span> 150€)
                             </Typography>
                             <Typography
                                 textAlign='center'
@@ -149,7 +149,7 @@ function PricingBox() {
                             </Typography>
                             <Divider orientation='horizontal' flexItem />
                             <Typography textAlign='center' fontSize='14px'>
-                                (200€)
+                                (<span style={{ fontSize: 12 }}>from</span> 200€)
                             </Typography>
                             <Typography
                                 textAlign='center'

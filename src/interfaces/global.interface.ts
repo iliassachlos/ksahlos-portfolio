@@ -15,3 +15,8 @@ export interface IDocData {
 export interface IPhoto extends IDocData {
     id: string;
 }
+
+export interface ILocations {
+    name: string;
+    coordinates: [number, number];
+}
