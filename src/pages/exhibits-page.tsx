@@ -5,7 +5,7 @@ import LeafletMap from '../components/exhibits/leaflet-map';
 const ExhibitsPage = () => {
     return (
         <Container maxWidth='xl'>
-            <Stack direction={{ xs: 'column', md: 'row' }} height='90vh' py={2} spacing={{ xs: 4, md: 0 }}>
+            <Stack direction={{ xs: 'column', md: 'row' }} height='90vh' py={2} spacing={{ xs: 4, md: 0 }} gap={2}>
                 <Box width={{ xs: '100%', md: '50%' }} height={{ md: '100%' }}>
                     <Paper elevation={2} sx={{ height: '100%' }}>
                         <Box p={2} height='100%'>
@@ -19,7 +19,7 @@ const ExhibitsPage = () => {
                         </Box>
                     </Paper>
                 </Box>
-                <Box width={{ xs: '100%', md: '50%' }} height={{ xs: '80%', md: '100%' }}>
+                <Box width={{ xs: '100%', md: '50%' }} height={{ xs: '80%', md: '100%' }} zIndex={10}>
                     <LeafletMap />
                 </Box>
             </Stack>
