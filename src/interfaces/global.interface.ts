@@ -1,4 +1,3 @@
-// /src/interfaces/global.interface.ts
 export interface IHeaderData {
     title: string;
     url?: string;
@@ -16,7 +15,11 @@ export interface IPhoto extends IDocData {
     id: string;
 }
 
-export interface ILocations {
+export interface IExhibitsData {
     name: string;
     coordinates: [number, number];
+}
+
+export interface IExhibits extends IExhibitsData {
+    id: string;
 }

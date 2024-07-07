@@ -1,19 +1,26 @@
 import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { ILocations } from '../../interfaces/global.interface';
+import { useEffect, useState } from 'react';
+import { IExhibits } from '../../interfaces/global.interface';
+import { useFirebase } from '../../utils/use-firebase';
 
 function LeafletMap() {
-    const locations: ILocations[] = [
-        {
-            name: 'MYTHOS Gallery, Skala Eresos Lesvos',
-            coordinates: [39.13515977866505, 25.930645181969865],
-        },
-        {
-            name: 'STONE HOUSE Gallery, Petra Lesvos',
-            coordinates: [39.326620158236, 26.176737241503243],
-        },
-    ];
+    const [exhibits, setExhibits] = useState<IExhibits[]>([]);
 
+    const { fetchExhibits } = useFirebase();
+
+    useEffect(() => {
+        fetchExhibitsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Fetch exhibits data
+    async function fetchExhibitsData() {
+        const data = await fetchExhibits();
+        setExhibits(data);
+    }
+
+    // Marker icon
     const markerIcon = new Icon({
         iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
         iconSize: [25, 41],
@@ -32,9 +39,9 @@ function LeafletMap() {
                                 OpenStreetMap
                             </a> contributors'
             />
-            {locations.map((location, index) => (
-                <Marker icon={markerIcon} key={index} position={location.coordinates}>
-                    <Popup>{location.name}</Popup>
+            {exhibits.map((exhibit) => (
+                <Marker icon={markerIcon} key={exhibit.id} position={exhibit.coordinates}>
+                    <Popup>{exhibit.name}</Popup>
                 </Marker>
             ))}
         </MapContainer>

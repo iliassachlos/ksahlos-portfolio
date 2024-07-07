@@ -1,8 +1,7 @@
 import { Masonry } from '@mui/lab';
 import { IPhoto } from '../../interfaces/global.interface';
 import { Box, Stack, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../state/store';
+import { useDispatch } from 'react-redux';
 import PhotoModal from './modals/photo-modal';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../state/photo-modal/photo-modal-slice';
 
