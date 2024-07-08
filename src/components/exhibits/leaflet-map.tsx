@@ -1,25 +1,12 @@
 import { Icon } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import { useEffect, useState } from 'react';
 import { IExhibits } from '../../interfaces/global.interface';
-import { useFirebase } from '../../utils/use-firebase';
 
-function LeafletMap() {
-    const [exhibits, setExhibits] = useState<IExhibits[]>([]);
+interface ILeafletMapProps {
+    exhibits: IExhibits[];
+}
 
-    const { fetchExhibits } = useFirebase();
-
-    useEffect(() => {
-        fetchExhibitsData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    // Fetch exhibits data
-    async function fetchExhibitsData() {
-        const data = await fetchExhibits();
-        setExhibits(data);
-    }
-
+function LeafletMap({ exhibits }: ILeafletMapProps) {
     // Marker icon
     const markerIcon = new Icon({
         iconUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',

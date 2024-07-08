@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { IPhoto } from '../../interfaces/global.interface';
-import { useFirebase } from '../../utils/use-firebase';
+import { useFirebase } from '../../hooks/use-firebase';
 import Spinner from '../../components/shared/spinner';
 import InfoAlert from '../../components/shared/alerts/info-alert';
 import MasonryGrid from '../../components/shared/masonry-grid';
@@ -10,7 +10,7 @@ function IllusionPage() {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const { fetchData } = useFirebase();
+    const { fetchFineArtPhotos } = useFirebase();
 
     const category: string = 'fine-art';
     const subCategory: string = 'illusion';
@@ -21,7 +21,7 @@ function IllusionPage() {
     }, []);
 
     async function fetchIllusionPhotos() {
-        const data = await fetchData(category, subCategory);
+        const data = await fetchFineArtPhotos(category, subCategory);
         setPhotos(data);
         setIsLoading(false);
     }

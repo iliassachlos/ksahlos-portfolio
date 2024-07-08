@@ -1,8 +1,26 @@
 import { Box, Container, Paper, Stack, Typography } from '@mui/material';
 import 'leaflet/dist/leaflet.css';
 import LeafletMap from '../components/exhibits/leaflet-map';
+import { useState, useEffect } from 'react';
+import { IExhibits } from '../interfaces/global.interface';
+import { useFirebase } from '../hooks/use-firebase';
 
 const ExhibitsPage = () => {
+    const [exhibits, setExhibits] = useState<IExhibits[]>([]);
+
+    const { fetchExhibits } = useFirebase();
+
+    useEffect(() => {
+        // Fetch exhibits data
+        async function fetchExhibitsData() {
+            const data = await fetchExhibits();
+            setExhibits(data);
+        }
+
+        fetchExhibitsData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <Container maxWidth='xl'>
             <Stack direction={{ xs: 'column', md: 'row' }} height='90vh' py={2} spacing={{ xs: 4, md: 0 }} gap={2}>
@@ -13,14 +31,15 @@ const ExhibitsPage = () => {
                                 Current Exhibitions
                             </Typography>
                             <Stack spacing={1}>
-                                <li>MYTHOS Gallery, Skala Eresos Lesvos</li>
-                                <li>STONE HOUSE Gallery, Petra Lesvos</li>
+                                {exhibits.map((exhibit) => (
+                                    <li key={exhibit.id}>{exhibit.name}</li>
+                                ))}
                             </Stack>
                         </Box>
                     </Paper>
                 </Box>
                 <Box width={{ xs: '100%', md: '50%' }} height={{ xs: '80%', md: '100%' }} zIndex={10}>
-                    <LeafletMap />
+                    <LeafletMap exhibits={exhibits} />
                 </Box>
             </Stack>
         </Container>

@@ -3,6 +3,7 @@ import { blue, grey } from '@mui/material/colors';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import HomeIcon from '@mui/icons-material/Home';
+import MuseumIcon from '@mui/icons-material/Museum';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCategory } from '../../state/admin/admin-slice';
 import { RootState } from '../../state/store';
@@ -32,7 +33,7 @@ function Sidebar() {
             <Box
                 display='flex'
                 alignItems='center'
-                bgcolor={selectedCategory === 'add' ? blue[100] : ''}
+                bgcolor={selectedCategory === 'photos' ? blue[100] : ''}
                 borderRadius='4px'
                 p={1}
                 sx={{
@@ -40,15 +41,15 @@ function Sidebar() {
                     transition: 'background-color 300ms ease-in-out',
                     '&:hover': { bgcolor: grey[300] },
                 }}
-                onClick={() => dispatch(setSelectedCategory('add'))}
+                onClick={() => dispatch(setSelectedCategory('photos'))}
             >
-                <AddAPhotoIcon sx={{ mr: 1, mb: '2px' }} />
-                <Typography variant='subtitle1'>Add Photo</Typography>
+                <InsertPhotoIcon sx={{ mr: 1, mb: '2px' }} />
+                <Typography variant='subtitle1'>Photos</Typography>
             </Box>
             <Box
                 display='flex'
                 alignItems='center'
-                bgcolor={selectedCategory === 'edit' ? blue[100] : ''}
+                bgcolor={selectedCategory === 'exhibits' ? blue[100] : ''}
                 borderRadius='4px'
                 p={1}
                 sx={{
@@ -56,10 +57,10 @@ function Sidebar() {
                     transition: 'background-color 300ms ease-in-out',
                     '&:hover': { bgcolor: grey[300] },
                 }}
-                onClick={() => dispatch(setSelectedCategory('edit'))}
+                onClick={() => dispatch(setSelectedCategory('exhibits'))}
             >
-                <InsertPhotoIcon sx={{ mr: 1, mb: '2px' }} />
-                <Typography variant='subtitle1'>Photos</Typography>
+                <MuseumIcon sx={{ mr: 1, mb: '2px' }} />
+                <Typography variant='subtitle1'>Exhibits</Typography>
             </Box>
             {/* Add more sidebar items as needed */}
         </Stack>
