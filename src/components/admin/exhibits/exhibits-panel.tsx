@@ -8,10 +8,12 @@ import { setAddExhibitModalOpen } from '../../../state/admin/exhibit-slice';
 import { RootState } from '../../../state/store';
 import AddExhibitModal from './add-exhibit-modal';
 import EditExhibitModal from './edit-exhibit-modal';
-import DeleteExhibitModal from "./delete-exhibit-modal";
+import DeleteExhibitModal from './delete-exhibit-modal';
+import Spinner from '../../shared/spinner';
 
 function ExhibitsPanel() {
     const [exhibits, setExhibits] = useState<IExhibits[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const addExhibitsModalOpen: boolean = useSelector((state: RootState) => state.exhibit.addExhibitModalOpen);
     const editExhibitsModalOpen: boolean = useSelector((state: RootState) => state.exhibit.editExhibitModalOpen);
@@ -25,6 +27,7 @@ function ExhibitsPanel() {
         async function fetchExhibitsData() {
             const data = await fetchExhibits();
             setExhibits(data);
+            setLoading(false);
         }
 
         fetchExhibitsData();
@@ -36,7 +39,7 @@ function ExhibitsPanel() {
     }
 
     console.log('exhibits', addExhibitsModalOpen);
-
+    console.log('loading', loading);
     return (
         <Box sx={{ bgcolor: 'white', p: 2, borderRadius: 4, boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
             <Box mb={4}>
@@ -55,7 +58,12 @@ function ExhibitsPanel() {
             </>
             {/* Photos Table */}
             <Box>
-                <ExhibitsTable exhibits={exhibits} />
+                {loading && (
+                    <Box display='flex' justifyContent='center' alignItems='center'>
+                        <Spinner />
+                    </Box>
+                )}
+                {!loading && <ExhibitsTable exhibits={exhibits} />}
             </Box>
             {addExhibitsModalOpen && <AddExhibitModal />}
             {editExhibitsModalOpen && <EditExhibitModal />}

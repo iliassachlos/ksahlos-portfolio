@@ -7,6 +7,7 @@ export interface IPhotoState {
     editPhotoModalOpen: boolean;
     deletePhotoModalOpen: boolean;
     selectedPhoto: IPhoto | null;
+    selectedPhotoCategory: 'escape' | 'etherial' | 'illusion' | 'essential' | 'local-art' | null;
 }
 
 const initialState: IPhotoState = {
@@ -14,6 +15,7 @@ const initialState: IPhotoState = {
     editPhotoModalOpen: false,
     deletePhotoModalOpen: false,
     selectedPhoto: null,
+    selectedPhotoCategory: null,
 };
 
 export const photoSlice = createSlice({
@@ -32,9 +34,20 @@ export const photoSlice = createSlice({
         setSelectedPhoto: (state, action: PayloadAction<IPhoto | null>) => {
             state.selectedPhoto = action.payload;
         },
+        setSelectedPhotoCategory: (
+            state,
+            action: PayloadAction<'escape' | 'etherial' | 'illusion' | 'essential' | 'local-art' | null>
+        ) => {
+            state.selectedPhotoCategory = action.payload;
+        },
     },
 });
 
-export const { setAddPhotoModalOpen, setEditPhotoModalOpen, setDeletePhotoModalOpen, setSelectedPhoto } =
-    photoSlice.actions;
+export const {
+    setAddPhotoModalOpen,
+    setEditPhotoModalOpen,
+    setDeletePhotoModalOpen,
+    setSelectedPhoto,
+    setSelectedPhotoCategory,
+} = photoSlice.actions;
 export default photoSlice.reducer;

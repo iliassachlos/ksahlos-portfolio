@@ -17,22 +17,6 @@ function Sidebar() {
             <Box
                 display='flex'
                 alignItems='center'
-                bgcolor={selectedCategory === 'home' ? blue[100] : ''}
-                borderRadius='4px'
-                p={1}
-                sx={{
-                    cursor: 'pointer',
-                    transition: 'background-color 300ms ease-in-out',
-                    '&:hover': { bgcolor: grey[300] },
-                }}
-                onClick={() => dispatch(setSelectedCategory('home'))}
-            >
-                <HomeIcon sx={{ mr: 1, mb: '2px' }} />
-                <Typography variant='subtitle1'>Home</Typography>
-            </Box>
-            <Box
-                display='flex'
-                alignItems='center'
                 bgcolor={selectedCategory === 'photos' ? blue[100] : ''}
                 borderRadius='4px'
                 p={1}

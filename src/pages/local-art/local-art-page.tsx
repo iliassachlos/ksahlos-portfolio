@@ -6,20 +6,20 @@ import Spinner from '../../components/shared/spinner';
 import InfoAlert from '../../components/shared/alerts/info-alert';
 import MasonryGrid from '../../components/shared/masonry-grid';
 
-function EscapePage() {
+function LocalArtPage() {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const { fetchPhotos } = useFirebase();
 
-    const category: string = 'escape';
+    const category: string = 'local-art';
 
     useEffect(() => {
-        fetchEscapePhotos();
+        fetchLocalArtPhotos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    async function fetchEscapePhotos() {
+    async function fetchLocalArtPhotos() {
         const data = await fetchPhotos(category);
         setPhotos(data);
         setIsLoading(false);
@@ -42,4 +42,4 @@ function EscapePage() {
     );
 }
 
-export default EscapePage;
+export default LocalArtPage;

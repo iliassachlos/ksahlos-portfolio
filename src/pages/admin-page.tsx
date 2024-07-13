@@ -2,7 +2,6 @@ import { Box, Stack } from '@mui/material';
 import Sidebar from '../components/admin/sidebar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
-import HomePanel from '../components/admin/home/home-panel';
 import PhotosPanel from '../components/admin/photos/photos-panel';
 import ExhibitsPanel from '../components/admin/exhibits/exhibits-panel';
 
@@ -16,7 +15,6 @@ function AdminpanelPage() {
             </Box>
             <Box height='100vh' sx={{ flex: 1, p: 3 }}>
                 <Stack direction='column' spacing={2}>
-                    {selectedCategory === 'home' && <HomePanel />}
                     {selectedCategory === 'photos' && <PhotosPanel />}
                     {selectedCategory === 'exhibits' && <ExhibitsPanel />}
                 </Stack>

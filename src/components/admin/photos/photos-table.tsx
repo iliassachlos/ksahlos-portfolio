@@ -8,28 +8,36 @@ import {
     TableBody,
     Stack,
     IconButton,
-    Icon,
     Box,
+    Tooltip,
 } from '@mui/material';
 import { IPhoto } from '../../../interfaces/global.interface';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HideImageIcon from '@mui/icons-material/HideImage';
-import { green, orange, red, yellow } from "@mui/material/colors";
-import InfoAlert from "../../shared/alerts/info-alert";
+import { green, orange, red } from '@mui/material/colors';
+import InfoAlert from '../../shared/alerts/info-alert';
+import { useDispatch } from 'react-redux';
+import { setEditPhotoModalOpen, setSelectedPhoto } from '../../../state/admin/photo-slice';
 
 interface IPhotoTableProps {
     photos: IPhoto[];
 }
 
 function PhotosTable({ photos }: IPhotoTableProps) {
+    const dispatch = useDispatch();
 
-    if(photos.length === 0){
-        return( 
+    function editPhotoHandler(photo: IPhoto) {
+        dispatch(setEditPhotoModalOpen(true));
+        dispatch(setSelectedPhoto(photo))
+    }
+
+    if (photos.length === 0) {
+        return (
             <Box>
-                <InfoAlert text="No photos were found!"/>
+                <InfoAlert text='No photos were found!' />
             </Box>
-        )
+        );
     }
 
     return (
@@ -39,7 +47,6 @@ function PhotosTable({ photos }: IPhotoTableProps) {
                     <TableRow>
                         <TableCell align='center'>Image</TableCell>
                         <TableCell align='center'>Title</TableCell>
-                        <TableCell align='center'>Description</TableCell>
                         <TableCell align='center'>Number</TableCell>
                         <TableCell align='center'>Hidden</TableCell>
                         <TableCell align='center'>Actions</TableCell>
@@ -54,7 +61,6 @@ function PhotosTable({ photos }: IPhotoTableProps) {
                             <TableCell align='center' component='th' scope='row'>
                                 {photo.title}
                             </TableCell>
-                            <TableCell align='center'>{photo.desc}</TableCell>
                             <TableCell align='center'>{photo.number}</TableCell>
                             <TableCell align='center'></TableCell>
                             <TableCell align='center'>
@@ -67,15 +73,25 @@ function PhotosTable({ photos }: IPhotoTableProps) {
                                     spacing={2}
                                     py={1}
                                 >
-                                    <IconButton color='primary' sx={{ '&:hover': { color: red[500] } }}>
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton color='primary' sx={{ '&:hover': { color: green[500] } }}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                    <IconButton color='primary' sx={{ '&:hover': { color: orange[500] } }}>
-                                        <HideImageIcon />
-                                    </IconButton>
+                                    <Tooltip title='Edit'>
+                                        <IconButton
+                                            color='primary'
+                                            sx={{ '&:hover': { color: green[500] } }}
+                                            onClick={() => editPhotoHandler(photo)}
+                                        >
+                                            <EditIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title='Delete'>
+                                        <IconButton color='primary' sx={{ '&:hover': { color: red[500] } }}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title='Hide'>
+                                        <IconButton color='primary' sx={{ '&:hover': { color: orange[500] } }}>
+                                            <HideImageIcon />
+                                        </IconButton>
+                                    </Tooltip>
                                 </Stack>
                             </TableCell>
                         </TableRow>

@@ -6,9 +6,9 @@ export interface IHeaderData {
 
 export interface IDocData {
     title: string;
-    desc: string;
     number: number;
     url: string;
+    visibility: boolean;
 }
 
 export interface IPhoto extends IDocData {

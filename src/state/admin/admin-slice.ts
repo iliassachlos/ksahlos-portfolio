@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface IAdminState {
-    selectedCategory: 'home' | 'photos' | 'exhibits';
+    selectedCategory: 'photos' | 'exhibits';
 }
 
 const initialState: IAdminState = {
-    selectedCategory: 'home',
+    selectedCategory: 'photos',
 };
 
 export const adminSlice = createSlice({
     name: 'admin',
     initialState,
     reducers: {
-        setSelectedCategory: (state, action: PayloadAction<'home' | 'photos' | 'exhibits'>) => {
+        setSelectedCategory: (state, action: PayloadAction< 'photos' | 'exhibits'>) => {
             state.selectedCategory = action.payload;
         },
     },

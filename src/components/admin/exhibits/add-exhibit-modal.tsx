@@ -1,4 +1,4 @@
-import { Box, Button, InputLabel, Modal, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, Stack, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
 import { setAddExhibitModalOpen } from '../../../state/admin/exhibit-slice';

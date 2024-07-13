@@ -10,10 +10,9 @@ function IllusionPage() {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const { fetchFineArtPhotos } = useFirebase();
+    const { fetchPhotos } = useFirebase();
 
-    const category: string = 'fine-art';
-    const subCategory: string = 'illusion';
+    const category: string = 'illusion';
 
     useEffect(() => {
         fetchIllusionPhotos();
@@ -21,7 +20,7 @@ function IllusionPage() {
     }, []);
 
     async function fetchIllusionPhotos() {
-        const data = await fetchFineArtPhotos(category, subCategory);
+        const data = await fetchPhotos(category);
         setPhotos(data);
         setIsLoading(false);
     }

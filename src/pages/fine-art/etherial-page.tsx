@@ -10,18 +10,17 @@ function EtherialPagεe() {
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const { fetchFineArtPhotos } = useFirebase();
+    const { fetchPhotos } = useFirebase();
 
-    const category: string = 'fine-art';
-    const subCategory: string = 'etherial';
+    const category: string = 'etherial';
 
     useEffect(() => {
         fetchEtherialPhotos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     async function fetchEtherialPhotos() {
-        const data = await fetchFineArtPhotos(category, subCategory);
+        const data = await fetchPhotos(category);
         setPhotos(data);
         setIsLoading(false);
     }

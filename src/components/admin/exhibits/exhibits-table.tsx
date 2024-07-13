@@ -9,6 +9,7 @@ import {
     Box,
     IconButton,
     Stack,
+    Tooltip,
 } from '@mui/material';
 import { IExhibits } from '../../../interfaces/global.interface';
 import InfoAlert from '../../shared/alerts/info-alert';
@@ -29,14 +30,6 @@ interface IExhibitsTableProps {
 function ExhibitsTable({ exhibits }: IExhibitsTableProps) {
     const dispatch = useDispatch();
 
-    if (exhibits.length === 0) {
-        return (
-            <Box>
-                <InfoAlert text='No exhibits were found!' />
-            </Box>
-        );
-    }
-
     function editExhibitClickHandler(exhibit: IExhibits) {
         dispatch(setEditExhibitModalOpen(true));
         dispatch(setSelectedExhibit(exhibit));
@@ -45,6 +38,14 @@ function ExhibitsTable({ exhibits }: IExhibitsTableProps) {
     function deleteExhibitClickHandler(exhibit: IExhibits) {
         dispatch(setDeleteExhibitModalOpen(true));
         dispatch(setSelectedExhibit(exhibit));
+    }
+
+    if (exhibits.length === 0) {
+        return (
+            <Box>
+                <InfoAlert text='No exhibits were found!' />
+            </Box>
+        );
     }
 
     return (
@@ -72,20 +73,24 @@ function ExhibitsTable({ exhibits }: IExhibitsTableProps) {
                                     spacing={2}
                                     py={1}
                                 >
-                                    <IconButton
-                                        color='primary'
-                                        sx={{ '&:hover': { color: green[500] } }}
-                                        onClick={() => editExhibitClickHandler(exhibit)}
-                                    >
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton
-                                        color='primary'
-                                        sx={{ '&:hover': { color: red[500] } }}
-                                        onClick={() => deleteExhibitClickHandler(exhibit)}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
+                                    <Tooltip title='Edit'>
+                                        <IconButton
+                                            color='primary'
+                                            sx={{ '&:hover': { color: green[500] } }}
+                                            onClick={() => editExhibitClickHandler(exhibit)}
+                                        >
+                                            <EditIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title='Delete'>
+                                        <IconButton
+                                            color='primary'
+                                            sx={{ '&:hover': { color: red[500] } }}
+                                            onClick={() => deleteExhibitClickHandler(exhibit)}
+                                        >
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Tooltip>
                                 </Stack>
                             </TableCell>
                         </TableRow>
