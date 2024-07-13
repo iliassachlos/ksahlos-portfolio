@@ -18,13 +18,14 @@ export const navigationData: IHeaderData[] = [
                 url: '/fine-art/etherial',
             },
             {
-                title: 'Illusion',
-                url: '/fine-art/illusion',
-            },
-            {
                 title: 'Essential',
                 url: '/fine-art/essential',
             },
+            {
+                title: 'Illusion',
+                url: '/fine-art/illusion',
+            },
+           
             {
                 title: 'Escape',
                 url: '/fine-art/escape',

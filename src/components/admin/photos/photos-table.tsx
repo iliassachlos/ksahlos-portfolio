@@ -65,7 +65,7 @@ function PhotosTable({ photos }: IPhotoTableProps) {
     }
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ maxHeight: { xl: 720 } }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -80,7 +80,7 @@ function PhotosTable({ photos }: IPhotoTableProps) {
                     {photos.map((photo) => (
                         <TableRow key={photo.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                             <TableCell align="center">
-                                <img src={photo.url} alt={photo.title} width={80} />
+                                <img src={photo.url} alt={photo.title} width={100} />
                             </TableCell>
                             <TableCell align="center" component="th" scope="row">
                                 {photo.title}

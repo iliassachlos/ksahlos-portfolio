@@ -6,7 +6,7 @@ import { auth } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 import ErrorAlert from "../components/shared/alerts/error-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setIsLoggedIn } from "../state/user/user-slice";
+import {  setIsLoggedIn } from "../state/user/user-slice";
 import { RootState } from "../state/store";
 
 function LoginPage() {
@@ -45,8 +45,6 @@ function LoginPage() {
     async function loginHandler() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            const user = auth.currentUser;
-            dispatch(setUser(user));
             dispatch(setIsLoggedIn(true));
             navigate("/admin");
         } catch (error: any) {

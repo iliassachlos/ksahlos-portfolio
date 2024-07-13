@@ -58,8 +58,7 @@ function PhotosPanel() {
         }
 
         fetchAllPhotos();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen, visibilityPhotoModalOpen]);
+    }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen, visibilityPhotoModalOpen, fetchPhotos]);
 
     // Choose photos based on selected category
     function choosePhotoCategory(): IPhoto[] {
