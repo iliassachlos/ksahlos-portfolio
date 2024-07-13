@@ -1,20 +1,17 @@
-import { Box, Button, MenuItem, Select, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { IPhoto } from '../../../interfaces/global.interface';
-import { useFirebase } from '../../../hooks/use-firebase';
-import PhotosTable from './photos-table';
-import Spinner from '../../shared/spinner';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    setAddPhotoModalOpen,
-    setSelectedPhotoCategory,
-} from '../../../state/admin/photo-slice';
-import { RootState } from '../../../state/store';
-import AddPhotoModal from './add-photo-modal';
-import EditPhotoModal from './edit-photo-modal';
+import { Box, Button, MenuItem, Select, Typography, SelectChangeEvent } from "@mui/material";
+import { ChangeEvent, useEffect, useState } from "react";
+import { IPhoto } from "../../../interfaces/global.interface";
+import { useFirebase } from "../../../hooks/use-firebase";
+import PhotosTable from "./photos-table";
+import Spinner from "../../shared/spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddPhotoModalOpen, setSelectedPhotoCategory } from "../../../state/admin/photo-slice";
+import { RootState } from "../../../state/store";
+import AddPhotoModal from "./add-photo-modal";
+import EditPhotoModal from "./edit-photo-modal";
 
 function PhotosPanel() {
-    const [selectedCategory, setSelectedCategory] = useState<string>('escape');
+    const [selectedCategory, setSelectedCategory] = useState<string>("escape");
     const [loading, setLoading] = useState<boolean>(true);
 
     // Photos
@@ -32,13 +29,21 @@ function PhotosPanel() {
     const { fetchPhotos } = useFirebase();
     const dispatch = useDispatch();
 
+    // Set selectedCategory redux state when component renders
+    useEffect(() => {
+        if (selectedCategory.length > 0) {
+            dispatch(setSelectedPhotoCategory(selectedCategory));
+        }
+    }, [selectedCategory, dispatch]);
+
+    // Fetch all photos when component renders
     useEffect(() => {
         async function fetchAllPhotos() {
-            const escapePhotos = await fetchPhotos('escape');
-            const essentialPhotos = await fetchPhotos('escape');
-            const etherialPhotos = await fetchPhotos('etherial');
-            const illusionPhotos = await fetchPhotos('illusion');
-            const localArtPhotos = await fetchPhotos('local-art');
+            const escapePhotos = await fetchPhotos("escape");
+            const essentialPhotos = await fetchPhotos("essential");
+            const etherialPhotos = await fetchPhotos("etherial");
+            const illusionPhotos = await fetchPhotos("illusion");
+            const localArtPhotos = await fetchPhotos("local-art");
 
             setEscapePhotos(escapePhotos);
             setEssentialPhotos(essentialPhotos);
@@ -53,50 +58,55 @@ function PhotosPanel() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen]);
 
-    //
+    // Choose photos based on selected category
     function choosePhotoCategory(): IPhoto[] {
         switch (selectedCategory) {
-            case 'essential':
+            case "essential":
                 return essentialPhotos;
-            case 'escape':
+            case "escape":
                 return escapePhotos;
-            case 'etherial':
+            case "etherial":
                 return etherialPhotos;
-            case 'illusion':
+            case "illusion":
                 return illusionPhotos;
-            case 'local-art':
+            case "local-art":
                 return localArtPhotos;
             default:
                 return [];
         }
     }
-
+    
     function addPhotoClickHandler() {
         dispatch(setAddPhotoModalOpen(true));
     }
+    
+    function selectedCategoryHandler(e: SelectChangeEvent<string>) {
+        setSelectedCategory(e.target.value);
+        dispatch(setSelectedPhotoCategory(e.target.value));
+    }
 
     return (
-        <Box sx={{ bgcolor: 'white', p: 2, borderRadius: 2, boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
+        <Box sx={{ bgcolor: "white", p: 2, borderRadius: 2, boxShadow: "0 0 10px rgba(0,0,0,0.1)" }}>
             <Box mb={4}>
-                <Typography variant='h5'>Photos panel</Typography>
+                <Typography variant="h5">Photos panel</Typography>
             </Box>
-            <Box display='flex' justifyContent='space-between' alignItems='center'>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Box mb={2}>
                     <Select
                         value={selectedCategory}
-                        label='Category'
-                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        label="Category"
+                        onChange={selectedCategoryHandler}
                         sx={{ width: 250 }}
                     >
-                        <MenuItem value='escape'>Escape</MenuItem>
-                        <MenuItem value='essential'>Essential</MenuItem>
-                        <MenuItem value='etherial'>Etherial</MenuItem>
-                        <MenuItem value='illusion'>Illusion</MenuItem>
-                        <MenuItem value='local-art'>Local Art</MenuItem>
+                        <MenuItem value="escape">Escape</MenuItem>
+                        <MenuItem value="essential">Essential</MenuItem>
+                        <MenuItem value="etherial">Etherial</MenuItem>
+                        <MenuItem value="illusion">Illusion</MenuItem>
+                        <MenuItem value="local-art">Local Art</MenuItem>
                     </Select>
                 </Box>
                 <Box>
-                    <Button variant='contained' color='primary' size='large' onClick={() => addPhotoClickHandler()}>
+                    <Button variant="contained" color="primary" size="large" onClick={addPhotoClickHandler}>
                         Add Photo
                     </Button>
                 </Box>
@@ -104,7 +114,7 @@ function PhotosPanel() {
             {/* Photos Table */}
             <Box>
                 {loading && (
-                    <Box display='flex' justifyContent='center' alignItems='center'>
+                    <Box display="flex" justifyContent="center" alignItems="center">
                         <Spinner />
                     </Box>
                 )}

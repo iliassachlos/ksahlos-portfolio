@@ -1,9 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import headerReducer from './header/header-slice';
-import photoModalReducer from './photo-modal/photo-modal-slice';
-import adminReducer from './admin/admin-slice';
-import exhibitReducer from './admin/exhibit-slice';
-import photoReducer from './admin/photo-slice';
+import { configureStore } from "@reduxjs/toolkit";
+import headerReducer from "./header/header-slice";
+import photoModalReducer from "./photo-modal/photo-modal-slice";
+import adminReducer from "./admin/admin-slice";
+import exhibitReducer from "./admin/exhibit-slice";
+import photoReducer from "./admin/photo-slice";
 
 export const store = configureStore({
     reducer: {

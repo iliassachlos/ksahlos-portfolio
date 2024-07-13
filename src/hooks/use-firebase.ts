@@ -110,42 +110,49 @@ export function useFirebase() {
         newFile: File | null,
         visibility: boolean
     ) {
-        const storage = getStorage();
         try {
-            // Fetch the current photo document
-            const photoDoc = await getDoc(doc(db, category, photoId));
+            const photoDocRef = doc(db, category, photoId);
+            const photoDoc = await getDoc(photoDocRef);
+    
             if (!photoDoc.exists()) {
-                throw new Error('Photo does not exist');
+                throw new Error("Photo not found");
             }
-
-            const photoData = photoDoc.data() as IDocData;
-            const oldUrl = photoData.url;
-
-            // Extract the old file reference
-            const oldFileRef = ref(storage, oldUrl);
-            const oldFileSnapshot = await getMetadata(oldFileRef);
-            const oldFile = await getBlob(oldFileRef);
-
-            // New file reference with new title
-            const newFileRef = ref(storage, `photos/${category}/${newTitle}`);
-            await uploadBytes(newFileRef, oldFile);
-            const newUrl = await getDownloadURL(newFileRef);
-
-            // Delete the old file
-            await deleteObject(oldFileRef);
-
-            // Update the Firestore document with the new image URL and title
-            const updatedPhoto = {
-                title: newTitle,
-                number: newNumber,
-                url: newUrl,
-                visibility: visibility,
-            };
-
-            await updateDoc(doc(db, category, photoId), updatedPhoto);
-            console.log('Photo updated successfully');
+    
+            const photoData = photoDoc.data();
+    
+            // If a new file is provided, handle the file upload
+            if (newFile) {
+                const storage = getStorage();
+                const oldFileRef = ref(storage, photoData.url);
+    
+                // Delete the old file
+                await deleteObject(oldFileRef);
+    
+                // Upload the new file
+                const newFileRef = ref(storage, `${category}/${photoId}`);
+                await uploadBytes(newFileRef, newFile);
+    
+                // Get the new file URL
+                const newFileUrl = await getDownloadURL(newFileRef);
+    
+                // Update the photo document with the new file URL
+                await updateDoc(photoDocRef, {
+                    title: newTitle,
+                    number: newNumber,
+                    url: newFileUrl,
+                    visibility: visibility,
+                });
+            } else {
+                // Update the photo document without changing the file
+                await updateDoc(photoDocRef, {
+                    title: newTitle,
+                    number: newNumber,
+                    visibility: visibility,
+                });
+            }
         } catch (error) {
-            console.error('Error updating photo:', error);
+            console.error("Error updating photo:", error);
+            throw error;
         }
     }
 

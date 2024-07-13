@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { IPhoto } from '../../interfaces/global.interface';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { IPhoto } from "../../interfaces/global.interface";
 
 export interface IPhotoState {
     addPhotoModalOpen: boolean;
     editPhotoModalOpen: boolean;
     deletePhotoModalOpen: boolean;
     selectedPhoto: IPhoto | null;
-    selectedPhotoCategory: 'escape' | 'etherial' | 'illusion' | 'essential' | 'local-art' | null;
+    selectedPhotoCategory: string | null;
 }
 
 const initialState: IPhotoState = {
@@ -19,7 +19,7 @@ const initialState: IPhotoState = {
 };
 
 export const photoSlice = createSlice({
-    name: 'photoSlice',
+    name: "photoSlice",
     initialState,
     reducers: {
         setAddPhotoModalOpen: (state, action: PayloadAction<boolean>) => {
@@ -34,10 +34,7 @@ export const photoSlice = createSlice({
         setSelectedPhoto: (state, action: PayloadAction<IPhoto | null>) => {
             state.selectedPhoto = action.payload;
         },
-        setSelectedPhotoCategory: (
-            state,
-            action: PayloadAction<'escape' | 'etherial' | 'illusion' | 'essential' | 'local-art' | null>
-        ) => {
+        setSelectedPhotoCategory: (state, action: PayloadAction<string | null>) => {
             state.selectedPhotoCategory = action.payload;
         },
     },
