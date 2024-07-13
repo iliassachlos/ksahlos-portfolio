@@ -21,7 +21,8 @@ function EtherialPagεe() {
 
     async function fetchEtherialPhotos() {
         const data = await fetchPhotos(category);
-        setPhotos(data);
+        const filteredData = data.filter((photo) => photo.visibility === true);
+        setPhotos(filteredData);
         setIsLoading(false);
     }
 

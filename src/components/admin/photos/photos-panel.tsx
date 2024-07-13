@@ -1,5 +1,5 @@
 import { Box, Button, MenuItem, Select, Typography, SelectChangeEvent } from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IPhoto } from "../../../interfaces/global.interface";
 import { useFirebase } from "../../../hooks/use-firebase";
 import PhotosTable from "./photos-table";
@@ -9,6 +9,8 @@ import { setAddPhotoModalOpen, setSelectedPhotoCategory } from "../../../state/a
 import { RootState } from "../../../state/store";
 import AddPhotoModal from "./add-photo-modal";
 import EditPhotoModal from "./edit-photo-modal";
+import DeletePhotoModal from "./delete-photo-modal";
+import VisibilityPhotoModal from "./visibility-photo-modal";
 
 function PhotosPanel() {
     const [selectedCategory, setSelectedCategory] = useState<string>("escape");
@@ -25,6 +27,7 @@ function PhotosPanel() {
     const addPhotoModalOpen: boolean = useSelector((state: RootState) => state.photo.addPhotoModalOpen);
     const editPhotoModalOpen: boolean = useSelector((state: RootState) => state.photo.editPhotoModalOpen);
     const deletePhotoModalOpen: boolean = useSelector((state: RootState) => state.photo.deletePhotoModalOpen);
+    const visibilityPhotoModalOpen: boolean = useSelector((state: RootState) => state.photo.visibilityModalOpen);
 
     const { fetchPhotos } = useFirebase();
     const dispatch = useDispatch();
@@ -56,7 +59,7 @@ function PhotosPanel() {
 
         fetchAllPhotos();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen]);
+    }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen, visibilityPhotoModalOpen]);
 
     // Choose photos based on selected category
     function choosePhotoCategory(): IPhoto[] {
@@ -75,11 +78,11 @@ function PhotosPanel() {
                 return [];
         }
     }
-    
+
     function addPhotoClickHandler() {
         dispatch(setAddPhotoModalOpen(true));
     }
-    
+
     function selectedCategoryHandler(e: SelectChangeEvent<string>) {
         setSelectedCategory(e.target.value);
         dispatch(setSelectedPhotoCategory(e.target.value));
@@ -122,6 +125,8 @@ function PhotosPanel() {
             </Box>
             {addPhotoModalOpen && <AddPhotoModal />}
             {editPhotoModalOpen && <EditPhotoModal />}
+            {deletePhotoModalOpen && <DeletePhotoModal />}
+            {visibilityPhotoModalOpen && <VisibilityPhotoModal />}
         </Box>
     );
 }

@@ -6,6 +6,7 @@ export interface IPhotoState {
     addPhotoModalOpen: boolean;
     editPhotoModalOpen: boolean;
     deletePhotoModalOpen: boolean;
+    visibilityModalOpen: boolean;
     selectedPhoto: IPhoto | null;
     selectedPhotoCategory: string | null;
 }
@@ -14,6 +15,7 @@ const initialState: IPhotoState = {
     addPhotoModalOpen: false,
     editPhotoModalOpen: false,
     deletePhotoModalOpen: false,
+    visibilityModalOpen: false,
     selectedPhoto: null,
     selectedPhotoCategory: null,
 };
@@ -31,6 +33,9 @@ export const photoSlice = createSlice({
         setDeletePhotoModalOpen: (state, action: PayloadAction<boolean>) => {
             state.deletePhotoModalOpen = action.payload;
         },
+        setVisibilityPhotoModalOpen: (state, action: PayloadAction<boolean>) => {
+            state.visibilityModalOpen = action.payload;
+        },
         setSelectedPhoto: (state, action: PayloadAction<IPhoto | null>) => {
             state.selectedPhoto = action.payload;
         },
@@ -44,6 +49,7 @@ export const {
     setAddPhotoModalOpen,
     setEditPhotoModalOpen,
     setDeletePhotoModalOpen,
+    setVisibilityPhotoModalOpen,
     setSelectedPhoto,
     setSelectedPhotoCategory,
 } = photoSlice.actions;

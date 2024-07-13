@@ -1,10 +1,9 @@
-import { Box, Button, InputLabel, Modal, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, Stack, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../state/store';
-import { setAddExhibitModalOpen, setDeleteExhibitModalOpen } from '../../../state/admin/exhibit-slice';
-import { ChangeEvent, useState } from 'react';
+import { setDeleteExhibitModalOpen } from '../../../state/admin/exhibit-slice';
+import { useState } from 'react';
 import { useFirebase } from '../../../hooks/use-firebase';
-import InfoAlert from '../../shared/alerts/info-alert';
 import Spinner from '../../shared/spinner';
 import { IExhibits } from '../../../interfaces/global.interface';
 
