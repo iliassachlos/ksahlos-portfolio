@@ -23,7 +23,6 @@ function EditPhotoModal() {
     const [newPhotoTitle, setNewPhotoTitle] = useState<string>("");
     const [newPhotoNumber, setNewPhotoNumber] = useState<number>(0);
     const [newPhotoVisibility, setNewPhotoVisibility] = useState<boolean>(false);
-    const [newPhotoFile, setNewPhotoFile] = useState<File | null>(null);
 
     const [loading, setLoading] = useState<boolean>(false);
     const [photoEdited, setPhotoEdited] = useState<boolean>(false);
@@ -47,12 +46,7 @@ function EditPhotoModal() {
             setNewPhotoVisibility(selectedPhoto.visibility);
         }
     }, [selectedPhoto]);
-
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setNewPhotoFile(event.target.files[0]);
-        }
-    };
+    
 
     async function editPhotoHandler() {
         try {
@@ -63,7 +57,6 @@ function EditPhotoModal() {
                     selectedPhoto.id,
                     newPhotoTitle,
                     newPhotoNumber,
-                    newPhotoFile, // Include the new file if selected
                     newPhotoVisibility
                 );
                 setPhotoEdited(true);
@@ -104,11 +97,6 @@ function EditPhotoModal() {
                                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                                     setNewPhotoNumber(Number(e.target.value))
                                 }
-                            />
-                            <TextField
-                                type="file"
-                                fullWidth
-                                onChange={handleFileChange}
                             />
                             <Stack direction="row" alignItems="center">
                                 <Typography>Off</Typography>

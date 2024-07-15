@@ -105,7 +105,6 @@ export function useFirebase() {
         photoId: string,
         newTitle: string,
         newNumber: number,
-        newFile: File | null,
         visibility: boolean
     ) {
         try {
@@ -116,38 +115,12 @@ export function useFirebase() {
                 throw new Error("Photo not found");
             }
 
-            const photoData = photoDoc.data();
-
-            // If a new file is provided, handle the file upload
-            if (newFile) {
-                const storage = getStorage();
-                const oldFileRef = ref(storage, photoData.url);
-
-                // Delete the old file
-                await deleteObject(oldFileRef);
-
-                // Upload the new file
-                const newFileRef = ref(storage, `${category}/${photoId}`);
-                await uploadBytes(newFileRef, newFile);
-
-                // Get the new file URL
-                const newFileUrl = await getDownloadURL(newFileRef);
-
-                // Update the photo document with the new file URL
-                await updateDoc(photoDocRef, {
-                    title: newTitle,
-                    number: newNumber,
-                    url: newFileUrl,
-                    visibility: visibility,
-                });
-            } else {
-                // Update the photo document without changing the file
-                await updateDoc(photoDocRef, {
-                    title: newTitle,
-                    number: newNumber,
-                    visibility: visibility,
-                });
-            }
+            // Update the photo document without changing the file
+            await updateDoc(photoDocRef, {
+                title: newTitle,
+                number: newNumber,
+                visibility: visibility,
+            });
         } catch (error) {
             console.error("Error updating photo:", error);
             throw error;

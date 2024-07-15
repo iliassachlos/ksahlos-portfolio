@@ -13,10 +13,10 @@ export const navigationData: IHeaderData[] = [
     {
         title: 'Fine Art',
         submenu: [
-            {
-                title: 'Etherial',
-                url: '/fine-art/etherial',
-            },
+            // {
+            //     title: 'Etherial',
+            //     url: '/fine-art/etherial',
+            // },
             {
                 title: 'Essential',
                 url: '/fine-art/essential',

@@ -15,13 +15,7 @@ import VisibilityPhotoModal from "./visibility-photo-modal";
 function PhotosPanel() {
     const [selectedCategory, setSelectedCategory] = useState<string>("escape");
     const [loading, setLoading] = useState<boolean>(true);
-
-    // Photos
-    const [escapePhotos, setEscapePhotos] = useState<IPhoto[]>([]);
-    const [essentialPhotos, setEssentialPhotos] = useState<IPhoto[]>([]);
-    const [etherialPhotos, setEtherialPhotos] = useState<IPhoto[]>([]);
-    const [illusionPhotos, setIllusionPhotos] = useState<IPhoto[]>([]);
-    const [localArtPhotos, setLocalArtPhotos] = useState<IPhoto[]>([]);
+    const [photos, setPhotos] = useState<IPhoto[]>([]);
 
     // Action Modals
     const addPhotoModalOpen: boolean = useSelector((state: RootState) => state.photo.addPhotoModalOpen);
@@ -32,51 +26,24 @@ function PhotosPanel() {
     const { fetchPhotos } = useFirebase();
     const dispatch = useDispatch();
 
-    // Set selectedCategory redux state when component renders
+    // Set selectedCategory redux state when component renders or category changes
     useEffect(() => {
         if (selectedCategory.length > 0) {
             dispatch(setSelectedPhotoCategory(selectedCategory));
         }
     }, [selectedCategory, dispatch]);
 
-    // Fetch all photos when component renders
+    // Fetch photos when component renders or category/modals change
     useEffect(() => {
-        async function fetchAllPhotos() {
-            const escapePhotos = await fetchPhotos("escape");
-            const essentialPhotos = await fetchPhotos("essential");
-            const etherialPhotos = await fetchPhotos("etherial");
-            const illusionPhotos = await fetchPhotos("illusion");
-            const localArtPhotos = await fetchPhotos("local-art");
-
-            setEscapePhotos(escapePhotos);
-            setEssentialPhotos(essentialPhotos);
-            setEtherialPhotos(etherialPhotos);
-            setIllusionPhotos(illusionPhotos);
-            setLocalArtPhotos(localArtPhotos);
-
+        async function fetchCategoryPhotos() {
+            setLoading(true);
+            const categoryPhotos = await fetchPhotos(selectedCategory);
+            setPhotos(categoryPhotos);
             setLoading(false);
         }
 
-        fetchAllPhotos();
-    }, [addPhotoModalOpen, editPhotoModalOpen, deletePhotoModalOpen, visibilityPhotoModalOpen, fetchPhotos]);
-
-    // Choose photos based on selected category
-    function choosePhotoCategory(): IPhoto[] {
-        switch (selectedCategory) {
-            case "essential":
-                return essentialPhotos;
-            case "escape":
-                return escapePhotos;
-            case "etherial":
-                return etherialPhotos;
-            case "illusion":
-                return illusionPhotos;
-            case "local-art":
-                return localArtPhotos;
-            default:
-                return [];
-        }
-    }
+        fetchCategoryPhotos();
+    }, [selectedCategory]);
 
     function addPhotoClickHandler() {
         dispatch(setAddPhotoModalOpen(true));
@@ -84,7 +51,6 @@ function PhotosPanel() {
 
     function selectedCategoryHandler(e: SelectChangeEvent<string>) {
         setSelectedCategory(e.target.value);
-        dispatch(setSelectedPhotoCategory(e.target.value));
     }
 
     return (
@@ -120,7 +86,7 @@ function PhotosPanel() {
                         <Spinner />
                     </Box>
                 )}
-                {!loading && <PhotosTable photos={choosePhotoCategory()} />}
+                {!loading && <PhotosTable photos={photos} />}
             </Box>
             {addPhotoModalOpen && <AddPhotoModal />}
             {editPhotoModalOpen && <EditPhotoModal />}
