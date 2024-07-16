@@ -64,7 +64,7 @@ function PhotoModal() {
                 <Box position="absolute" top={0} right={0}>
                     {/* Close button for modal */}
                     <IconButton onClick={closeModalHandler} color="primary" disableRipple>
-                        <CloseIcon sx={{ backgroundColor: "rgba(255,255,255,0.4)", borderRadius: "4px", p: "1px" }} />
+                        <CloseIcon/>
                     </IconButton>
                 </Box>
                 {selectedItem && (
@@ -86,7 +86,6 @@ function PhotoModal() {
                                     maxWidth: "100%", // Ensure the image does not exceed modal dimensions
                                     maxHeight: "100%", // Ensure the image does not exceed modal dimensions
                                     objectFit: objectFit,
-                                    borderRadius: "4px 4px 0px 0px",
                                 }}
                                 onLoad={handleImageLoad}
                             />

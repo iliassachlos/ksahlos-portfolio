@@ -57,7 +57,7 @@ const ExhibitsPage = () => {
                                         borderRadius={2}
                                         p={1}
                                     >
-                                        <IconButton size="small" color="primary">
+                                        <IconButton size="small" color="primary" disableRipple>
                                             <RoomIcon />
                                         </IconButton>
                                         <Typography>{exhibit.name}</Typography>
