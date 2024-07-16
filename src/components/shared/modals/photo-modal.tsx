@@ -1,4 +1,3 @@
-// /src/components/shared/modals/photo-modal.tsx
 import { Box, IconButton, Modal, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -15,6 +14,7 @@ const style = {
     alignItems: "center",
     height: "90%",
     width: "90%",
+
     bgcolor: "#F2F2F2",
     boxShadow: 24,
     outline: "none",
@@ -75,7 +75,6 @@ function PhotoModal() {
                             justifyContent="center"
                             alignItems="center"
                             height="calc(100% - 40px)"
-                            width="100%"
                         >
                             {/* Displaying selected image */}
                             <img
@@ -84,6 +83,8 @@ function PhotoModal() {
                                 style={{
                                     height: "100%",
                                     width: "100%",
+                                    maxWidth: "100%", // Ensure the image does not exceed modal dimensions
+                                    maxHeight: "100%", // Ensure the image does not exceed modal dimensions
                                     objectFit: objectFit,
                                     borderRadius: "4px 4px 0px 0px",
                                 }}
