@@ -26,8 +26,6 @@ function EssentialPage() {
         setIsLoading(false);
     }
 
-    console.log("Essential", photos);
-
     return (
         <Container maxWidth="xl">
             <Box p={2}>

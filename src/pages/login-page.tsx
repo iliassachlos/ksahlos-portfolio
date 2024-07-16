@@ -59,8 +59,6 @@ function LoginPage() {
         }
     }
 
-    console.log(isUserLoggedIn);
-
     return (
         <Container>
             <Box display="flex" justifyContent="center" alignItems="center" height="89vh">

@@ -23,8 +23,6 @@ const ExhibitsPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log(exhibits);
-
     return (
         <Container maxWidth="xl">
             <Stack

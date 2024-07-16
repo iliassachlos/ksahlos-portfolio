@@ -26,8 +26,6 @@ function EscapePage() {
         setIsLoading(false);
     }
 
-    console.log("Escape", photos);
-
     return (
         <Container maxWidth="xl">
             <Box p={2}>

@@ -121,12 +121,6 @@ function AddPhotoModal() {
         }
     }
 
-    console.log("newPhotoTitle:", newPhotoTitle);
-    console.log("newPhotoNumber:", newPhotoNumber);
-    console.log("newPhotoFile:", newPhotoFile);
-    console.log("newPhotoVisibility:", newPhotoVisibility);
-    console.log("selectedCategory:", selectedCategory);
-
     return (
         <Box>
             <Modal

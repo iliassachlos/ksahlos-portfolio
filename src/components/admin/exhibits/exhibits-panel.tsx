@@ -37,9 +37,7 @@ function ExhibitsPanel() {
     function addExhibitClickHandler() {
         dispatch(setAddExhibitModalOpen(true));
     }
-
-    console.log('exhibits', addExhibitsModalOpen);
-    console.log('loading', loading);
+   
     return (
         <Box sx={{ bgcolor: 'white', p: 2, borderRadius: 4, boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
             <Box mb={4}>
