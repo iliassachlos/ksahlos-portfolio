@@ -32,10 +32,13 @@ const ExhibitsPage = () => {
                 pb={6}
                 spacing={{ xs: 4, md: 0 }}
                 gap={2}
+                display={{sm: 'block', lg: 'flex'}}
+                justifyContent={'center'}
+                alignItems={'center'}
             >
                 <Box
                     width={{ xs: "100%", md: "50%" }}
-                    height={{ md: "100%" }}
+                    height={{ md: "100%", xl: "60%" }}
                     data-aos="zoom-in-up"
                     data-aos-delay="200"
                     data-aos-duration="800"
@@ -53,7 +56,6 @@ const ExhibitsPage = () => {
                                         textAlign="left"
                                         display="flex"
                                         alignItems="center"
-                                        bgcolor={green[100]}
                                         borderRadius={2}
                                         p={1}
                                     >
@@ -69,7 +71,7 @@ const ExhibitsPage = () => {
                 </Box>
                 <Box
                     width={{ xs: "100%", md: "50%" }}
-                    height={{ xs: "80%", md: "100%" }}
+                    height={{ xs: "80%", md: "100%", xl: "60%" }}
                     zIndex={10}
                     data-aos="zoom-in-up"
                     data-aos-delay="200"

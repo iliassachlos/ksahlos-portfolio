@@ -27,17 +27,15 @@ function IllusionPage() {
     }
 
     return (
-        <Container maxWidth='xl'>
-            <Box p={2}>
-                {isLoading && (
-                    <Box display='flex' justifyContent='center' alignItems='center'>
-                        <Spinner />
-                    </Box>
-                )}
-                {!isLoading && photos.length === 0 && <InfoAlert text='No photos were found' />}
-                {!isLoading && photos.length > 0 && <MasonryGrid photos={photos} />}
-            </Box>
-        </Container>
+        <Box p={2}>
+            {isLoading && (
+                <Box display='flex' justifyContent='center' alignItems='center'>
+                    <Spinner />
+                </Box>
+            )}
+            {!isLoading && photos.length === 0 && <InfoAlert text='No photos were found' />}
+            {!isLoading && photos.length > 0 && <MasonryGrid photos={photos} />}
+        </Box>
     );
 }
 

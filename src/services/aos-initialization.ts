@@ -1,4 +1,4 @@
-import Aos from "aos";
+import Aos from "aos"
 import { useEffect } from "react";
 
 function AosInitialization() {
