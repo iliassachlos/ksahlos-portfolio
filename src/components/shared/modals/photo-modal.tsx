@@ -91,8 +91,8 @@ function PhotoModal() {
                                     zIndex={1}
                                     sx={{ backdropFilter: 'blur(12px)' }}
                                 >
-                                    <Typography textAlign='center' fontSize={12} color='black' maxWidth='80%'>
-                                        {selectedItem.desc === undefined
+                                    <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
+                                        {selectedItem.desc === '' || selectedItem.desc === undefined
                                             ? 'No description was found for this photo'
                                             : selectedItem.desc}
                                     </Typography>

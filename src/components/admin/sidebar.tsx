@@ -1,8 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { blue, grey } from '@mui/material/colors';
-import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import HomeIcon from '@mui/icons-material/Home';
 import MuseumIcon from '@mui/icons-material/Museum';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCategory } from '../../state/admin/admin-slice';

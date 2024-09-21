@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIsHamburgerIconOpen, setIsMenuOpen } from '../../../../state/header/header-slice';
 import { red } from '@mui/material/colors';
+import { motion } from 'framer-motion';
 
 interface ISubMenuProps {
     subMenuItems: IHeaderData[];
@@ -18,7 +19,13 @@ function SubMenu({ subMenuItems }: ISubMenuProps) {
     }
 
     return (
-        <Box>
+        <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            transition={{ duration: 0.3 }}
+            className=' pt-1 px-10'
+        >
             <Box pt={1} px={10}>
                 <Stack direction='column' spacing='8px'>
                     {subMenuItems.map((subMenuItem: IHeaderData) => (
@@ -43,7 +50,7 @@ function SubMenu({ subMenuItems }: ISubMenuProps) {
                     ))}
                 </Stack>
             </Box>
-        </Box>
+        </motion.div>
     );
 }
 

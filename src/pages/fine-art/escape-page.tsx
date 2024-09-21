@@ -1,42 +1,60 @@
-import { Box, Container } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { IPhoto } from '../../interfaces/global.interface';
-import { useFirebase } from '../../hooks/use-firebase';
+import { Box } from '@mui/material';
+import { db } from '../../firebase/config';
+import { useQuery } from 'react-query';
+import { getDocs, query, collection, orderBy } from 'firebase/firestore';
 import Spinner from '../../components/shared/spinner';
 import InfoAlert from '../../components/shared/alerts/info-alert';
 import MasonryGrid from '../../components/shared/masonry-grid';
+import { IPhoto } from '../../interfaces/global.interface';
+import { STALE_TIME } from '../../utils/globals';
 
 function EscapePage() {
-    const [photos, setPhotos] = useState<IPhoto[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    const { fetchPhotos } = useFirebase();
-
     const category: string = 'escape';
 
-    useEffect(() => {
-        fetchEscapePhotos();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // Fetch Escape photos
+    const {
+        data: photos,
+        error,
+        isLoading,
+    } = useQuery<IPhoto[]>({
+        queryKey: ['escape-photos'],
+        queryFn: async () => {
+            const querySnapshot = await getDocs(query(collection(db, category), orderBy('number', 'asc')));
+            const photoData = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            })) as IPhoto[];
 
-    async function fetchEscapePhotos() {
-        const data = await fetchPhotos(category);
-        const filteredData = data.filter((photo) => photo.visibility === true);
-        setPhotos(filteredData);
-        setIsLoading(false);
+            return photoData.filter((photo: IPhoto) => photo.visibility === true);
+        },
+        staleTime: STALE_TIME,
+    });
+
+    if (isLoading) {
+        return (
+            <Box display='flex' justifyContent='center' alignItems='center' p={2}>
+                <Spinner />
+            </Box>
+        );
     }
 
-    return (
-        <Box p={2}>
-            {isLoading && (
-                <Box display='flex' justifyContent='center' alignItems='center'>
-                    <Spinner />
-                </Box>
-            )}
-            {!isLoading && photos.length === 0 && <InfoAlert text='No photos were found' />}
-            {!isLoading && photos.length > 0 && <MasonryGrid photos={photos} />}
-        </Box>
-    );
+    if (error) {
+        return (
+            <Box p={2}>
+                <InfoAlert text='Error loading photos.' />
+            </Box>
+        );
+    }
+
+    if (photos?.length === 0) {
+        return (
+            <Box p={2}>
+                <InfoAlert text='No photos were found' />
+            </Box>
+        );
+    }
+
+    return <Box p={2}>{photos && <MasonryGrid photos={photos} />}</Box>;
 }
 
 export default EscapePage;

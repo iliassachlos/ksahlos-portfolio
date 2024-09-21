@@ -1,7 +1,7 @@
 import { db } from "../firebase/config";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc } from "firebase/firestore";
 import { IDocData, IExhibits, IExhibitsData, IPhoto } from "../interfaces/global.interface";
-import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "@firebase/storage";
+import { deleteObject, getStorage, ref } from "@firebase/storage";
 
 export function useFirebase() {
     // Fetch photos according to category and subcategory
@@ -79,6 +79,7 @@ export function useFirebase() {
         category: string,
         subCategory: string,
         title: string,
+        desc: string,
         number: number,
         url: string,
         visibility: boolean
@@ -87,6 +88,7 @@ export function useFirebase() {
 
         const newPhoto = {
             title,
+            desc,
             number,
             url,
             visibility,
@@ -104,6 +106,7 @@ export function useFirebase() {
         category: string,
         photoId: string,
         newTitle: string,
+        newDesc: string,
         newNumber: number,
         visibility: boolean
     ) {
@@ -118,6 +121,7 @@ export function useFirebase() {
             // Update the photo document without changing the file
             await updateDoc(photoDocRef, {
                 title: newTitle,
+                desc: newDesc,
                 number: newNumber,
                 visibility: visibility,
             });
