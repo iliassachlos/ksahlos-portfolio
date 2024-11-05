@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { IPhoto } from "../../interfaces/global.interface";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { IPhoto } from '../../interfaces/global.interface';
 
 export interface IPhotoState {
     addPhotoModalOpen: boolean;
@@ -9,6 +9,10 @@ export interface IPhotoState {
     visibilityModalOpen: boolean;
     selectedPhoto: IPhoto | null;
     selectedPhotoCategory: string | null;
+
+    //Photos sort
+    sortedPhotos: IPhoto[] | undefined;
+    isSortEditEnabled: boolean;
 }
 
 const initialState: IPhotoState = {
@@ -18,10 +22,12 @@ const initialState: IPhotoState = {
     visibilityModalOpen: false,
     selectedPhoto: null,
     selectedPhotoCategory: null,
+    sortedPhotos: undefined,
+    isSortEditEnabled: false,
 };
 
 export const photoSlice = createSlice({
-    name: "photoSlice",
+    name: 'photoSlice',
     initialState,
     reducers: {
         setAddPhotoModalOpen: (state, action: PayloadAction<boolean>) => {
@@ -42,6 +48,12 @@ export const photoSlice = createSlice({
         setSelectedPhotoCategory: (state, action: PayloadAction<string | null>) => {
             state.selectedPhotoCategory = action.payload;
         },
+        setSortedPhotos: (state, action: PayloadAction<IPhoto[] | undefined>) => {
+            state.sortedPhotos = action.payload;
+        },
+        setIsSortEditEnabled: (state, action: PayloadAction<boolean>) => {
+            state.isSortEditEnabled = action.payload;
+        },
     },
 });
 
@@ -52,5 +64,7 @@ export const {
     setVisibilityPhotoModalOpen,
     setSelectedPhoto,
     setSelectedPhotoCategory,
+    setSortedPhotos,
+    setIsSortEditEnabled
 } = photoSlice.actions;
 export default photoSlice.reducer;

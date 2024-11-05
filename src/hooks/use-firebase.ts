@@ -1,5 +1,5 @@
 import { db } from "../firebase/config";
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc, writeBatch } from "firebase/firestore";
 import { IDocData, IExhibits, IExhibitsData, IPhoto } from "../interfaces/global.interface";
 import { deleteObject, getStorage, ref } from "@firebase/storage";
 
@@ -161,6 +161,23 @@ export function useFirebase() {
         }
     }
 
+    async function updatePhotoOrder(category: string, photos: IPhoto[]) {
+        const batch = writeBatch(db);
+
+        photos.forEach((photo, index) => {
+            const photoDocRef = doc(db, category, photo.id);
+            batch.update(photoDocRef, { number: index });
+        });
+
+        try {
+            await batch.commit();
+            console.log("Photo order updated successfully");
+        } catch (error) {
+            console.error("Error updating photo order:", error);
+        }
+    }
+
+
     return {
         // Photo fetching
         fetchPhotos,
@@ -176,5 +193,6 @@ export function useFirebase() {
         editPhoto,
         deletePhoto,
         changePhotoVisibility,
+        updatePhotoOrder
     };
 }
