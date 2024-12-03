@@ -84,7 +84,7 @@ function PhotosPanel() {
     }
 
     return (
-        <Box sx={{ bgcolor: 'white', p: 2, borderRadius: 2, boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
+        <Box height='100%' sx={{ bgcolor: 'white', p: 2, borderRadius: 2, boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
             <Box mb={4}>
                 <Typography variant='h5'>Photos panel</Typography>
             </Box>

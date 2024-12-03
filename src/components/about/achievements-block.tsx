@@ -20,6 +20,8 @@ function AchievementsBlock({ minHeight }: AchievementsBlockProps) {
                         ACHIEVEMENTS
                     </Typography>
                     <Divider />
+                    <li>35AWARDS 2024 Top 1% 'Surrealism'</li>
+                    <li>35AWARDS 2024 Top 2% 'Art Photography'</li>
                     <li>35AWARDS 2023 Top 1% "Man and Landscape"</li>
                     <li>The UCP Club Photographer Of the Month June 2022</li>
                     <li>35AWARDS 2022 Top 70</li>

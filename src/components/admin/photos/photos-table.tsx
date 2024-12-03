@@ -34,11 +34,11 @@ function PhotosTable({ photos }: IPhotoTableProps) {
     }
 
     return (
-        <Box>
+        <Box height='100%'>
             {sortedPhotos.length === 0 ? (
                 <InfoAlert text='No photos were found!' />
             ) : (
-                <TableContainer component={Paper} sx={{ maxHeight: { xl: 720 } }}>
+                <TableContainer component={Paper} sx={{ height: '100%' }}>
                     {isSortEditEnabled ? (
                         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                             <SortableContext
@@ -68,7 +68,7 @@ function PhotosTable({ photos }: IPhotoTableProps) {
                             </SortableContext>
                         </DndContext>
                     ) : (
-                        <Table sx={{ minWidth: 650 }} aria-label='sortable table'>
+                        <Table sx={{ minWidth: 650, height: '100%' }} aria-label='sortable table'>
                             <TableHead>
                                 <TableRow>
                                     <TableCell align='center'>Image</TableCell>
