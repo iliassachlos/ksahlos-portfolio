@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminpanelPage() {
     const selectedCategory = useSelector((state: RootState) => state.admin.selectedCategory);
-    const navigate = useNavigate();
     const isUserLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+    
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!isUserLoggedIn) {

@@ -24,3 +24,4 @@ export interface IExhibitsData {
 export interface IExhibits extends IExhibitsData {
     id: string;
 }
+

@@ -21,6 +21,7 @@ import ErrorAlert from '../../shared/alerts/error-alert';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../firebase/config';
 import { getDownloadURL, getStorage, ref, uploadBytes } from '@firebase/storage';
+import { PhotoCategoryEnum } from '../../../interfaces/global.enum';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -41,10 +42,7 @@ function AddPhotoModal() {
     const [newPhotoNumber, setNewPhotoNumber] = useState<number>(0);
     const [newPhotoVisibility, setNewPhotoVisibility] = useState<boolean>(false);
     const [newPhotoFile, setNewPhotoFile] = useState<File | null>(null);
-
-    const [selectedCategory, setSelectedCategory] = useState<
-        'escape' | 'essential' | 'etherial' | 'illusion' | 'local-art'
-    >('escape');
+    const [selectedCategory, setSelectedCategory] = useState<PhotoCategoryEnum>(PhotoCategoryEnum.MINIMALIST);
 
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
@@ -102,23 +100,23 @@ function AddPhotoModal() {
 
     function selectedCategoryHandler(e: any) {
         switch (e.target.value) {
-            case 'essential':
-                setSelectedCategory('essential');
+            case PhotoCategoryEnum.MINIMALIST:
+                setSelectedCategory(PhotoCategoryEnum.MINIMALIST);
                 break;
-            case 'escape':
-                setSelectedCategory('escape');
+            case PhotoCategoryEnum.MINIMALIST_BW:
+                setSelectedCategory(PhotoCategoryEnum.MINIMALIST_BW);
                 break;
-            case 'etherial':
-                setSelectedCategory('etherial');
+            case PhotoCategoryEnum.ABSTRACT:
+                setSelectedCategory(PhotoCategoryEnum.ABSTRACT);
                 break;
-            case 'illusion':
-                setSelectedCategory('illusion');
+            case PhotoCategoryEnum.ESCAPE:
+                setSelectedCategory(PhotoCategoryEnum.ESCAPE);
                 break;
-            case 'local-art':
-                setSelectedCategory('local-art');
+            case PhotoCategoryEnum.LOCAL_ART:
+                setSelectedCategory(PhotoCategoryEnum.LOCAL_ART);
                 break;
             default:
-                setSelectedCategory('escape');
+                setSelectedCategory(PhotoCategoryEnum.MINIMALIST);
                 break;
         }
     }
@@ -166,11 +164,11 @@ function AddPhotoModal() {
                                     onChange={(e) => selectedCategoryHandler(e)}
                                     fullWidth
                                 >
-                                    <MenuItem value='escape'>Escape</MenuItem>
-                                    <MenuItem value='essential'>Essential</MenuItem>
-                                    <MenuItem value='etherial'>Etherial</MenuItem>
-                                    <MenuItem value='illusion'>Illusion</MenuItem>
-                                    <MenuItem value='local-art'>Local Art</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.MINIMALIST}>Minimalist</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.MINIMALIST_BW}>Minimalist BW</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.ABSTRACT}>Abstract</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.ESCAPE}>Escape</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.LOCAL_ART}>Local Art</MenuItem>
                                 </Select>
                             </Stack>
 

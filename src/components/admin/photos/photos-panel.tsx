@@ -16,9 +16,10 @@ import AddPhotoModal from './add-photo-modal';
 import EditPhotoModal from './edit-photo-modal';
 import DeletePhotoModal from './delete-photo-modal';
 import VisibilityPhotoModal from './visibility-photo-modal';
+import { PhotoCategoryEnum } from '../../../interfaces/global.enum';
 
 function PhotosPanel() {
-    const [selectedCategory, setSelectedCategory] = useState<string>('escape');
+    const [selectedCategory, setSelectedCategory] = useState<string>('minimalist');
     const [loading, setLoading] = useState<boolean>(true);
     const [photos, setPhotos] = useState<IPhoto[]>([]);
     //const [isEditMode, setIsEditMode] = useState(false);
@@ -96,11 +97,11 @@ function PhotosPanel() {
                         onChange={selectedCategoryHandler}
                         sx={{ width: 250 }}
                     >
-                        <MenuItem value='escape'>Escape</MenuItem>
-                        <MenuItem value='essential'>Essential</MenuItem>
-                        <MenuItem value='etherial'>Etherial</MenuItem>
-                        <MenuItem value='illusion'>Illusion</MenuItem>
-                        <MenuItem value='local-art'>Local Art</MenuItem>
+                        <MenuItem value={PhotoCategoryEnum.MINIMALIST}>Minimalist</MenuItem>
+                        <MenuItem value={PhotoCategoryEnum.MINIMALIST_BW}>Minimalist BW</MenuItem>
+                        <MenuItem value={PhotoCategoryEnum.ABSTRACT}>Abstract</MenuItem>
+                        <MenuItem value={PhotoCategoryEnum.ESCAPE}>Escape</MenuItem>
+                        <MenuItem value={PhotoCategoryEnum.LOCAL_ART}>Local Art</MenuItem>
                     </Select>
                 </Box>
                 <Stack direction='row' gap={1}>
@@ -109,6 +110,7 @@ function PhotosPanel() {
                         color='primary'
                         size='large'
                         onClick={isSortEditEnabled ? handleSaveOrder : toggleEditMode}
+                        disabled={photos.length === 0}
                     >
                         {isSortEditEnabled ? 'Save Order' : 'Sort Photos'}
                     </Button>

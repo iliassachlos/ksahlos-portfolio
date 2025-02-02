@@ -13,22 +13,25 @@ export const navigationData: IHeaderData[] = [
     {
         title: 'Fine Art',
         submenu: [
+            {
+                title: 'Minimalist',
+                url: '/fine-art/minimalist',
+            },
+            {
+                title: 'Minimalist BW',
+                url: '/fine-art/minimalist-bw',
+            },
+            {
+                title: 'Abstract',
+                url: '/fine-art/abstract',
+            },
             // {
-            //     title: 'Etherial',
-            //     url: '/fine-art/etherial',
+            //     title: 'Escape',
+            //     url: '/fine-art/escape',
             // },
             {
-                title: 'Essential',
-                url: '/fine-art/essential',
-            },
-            {
-                title: 'Illusion',
-                url: '/fine-art/illusion',
-            },
-           
-            {
-                title: 'Escape',
-                url: '/fine-art/escape',
+                title: 'Local Art',
+                url: '/local-art',
             },
         ],
     },

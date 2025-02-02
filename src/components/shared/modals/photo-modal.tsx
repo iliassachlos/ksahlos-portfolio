@@ -6,6 +6,7 @@ import { IPhoto } from '../../../interfaces/global.interface';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../../state/photo-modal/photo-modal-slice';
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
+import {AnimatePresence, motion} from 'framer-motion';
 
 const style = {
     position: 'relative',
@@ -54,6 +55,9 @@ function PhotoModal() {
     }
 
     return (
+        <>
+        <AnimatePresence>
+
         <Modal
             open={isPhotoModalOpen}
             onClose={closeModalHandler}
@@ -65,7 +69,7 @@ function PhotoModal() {
                 alignItems: 'center',
                 overflow: 'auto',
             }}
-        >
+            >
             <Box position='relative' sx={{ ...style, maxWidth: '90vw', maxHeight: '90vh' }} data-testid='photo-modal'>
                 {selectedItem && (
                     <>
@@ -76,27 +80,33 @@ function PhotoModal() {
                             alignItems='center'
                             height='calc(100% - 40px)'
                             position='relative'
-                        >
+                            >
                             {isDescriptionOpen && (
-                                <Box
-                                    position='absolute'
-                                    top={0}
-                                    left={0}
-                                    width='100%'
-                                    height='100%'
-                                    bgcolor='rgba(255, 255, 255, 0.6)'
-                                    display='flex'
-                                    justifyContent='center'
-                                    alignItems='center'
-                                    zIndex={1}
-                                    sx={{ backdropFilter: 'blur(12px)' }}
-                                >
-                                    <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
-                                        {selectedItem.desc === '' || selectedItem.desc === undefined
-                                            ? 'No description was found for this photo'
-                                            : selectedItem.desc}
-                                    </Typography>
-                                </Box>
+                              <motion.div
+                              initial={{ opacity: 0, scale: 0.5 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0 }}
+                              transition={{ duration: 0.4, ease: 'easeInOut' }}
+                              style={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  left: 0,
+                                  width: '100%',
+                                  height: '100%',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                                  zIndex: 1,
+                                  backdropFilter: 'blur(12px)'
+                              }}
+                          >
+                               <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
+                                   {selectedItem.desc === '' || selectedItem.desc === undefined
+                                       ? 'No description was found for this photo'
+                                       : selectedItem.desc}
+                               </Typography>
+                           </motion.div>
                             )}
                             <img
                                 src={selectedItem.url}
@@ -134,6 +144,8 @@ function PhotoModal() {
                 )}
             </Box>
         </Modal>
+    </AnimatePresence>
+    </>
     );
 }
 

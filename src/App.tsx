@@ -5,13 +5,13 @@ import AboutPage from './pages/about-page';
 import PricingPage from './pages/pricing-page';
 import ContactPage from './pages/contact-page';
 import EscapePage from './pages/fine-art/escape-page';
-import EtherialPage from './pages/fine-art/etherial-page';
-import IllusionPage from './pages/fine-art/illusion-page';
 import LoginPage from './pages/login-page';
 import AdminpanelPage from './pages/admin-page';
 import ExhibitsPage from './pages/exhibits-page';
 import LocalArtPage from './pages/local-art/local-art-page';
-import EssentialPage from './pages/fine-art/essential-page';
+import AbstractPage from './pages/fine-art/abstract-page';
+import MinimalistPage from './pages/fine-art/minimalist-page';
+import MinimalistBwPage from './pages/fine-art/illusion-page';
 
 function App() {
     return (
@@ -24,10 +24,10 @@ function App() {
             <Route path='/exhibits' element={<ExhibitsPage />} />
 
             {/* Gallery Pages */}
+            <Route path='/fine-art/minimalist' element={<MinimalistPage />} />
+            <Route path='/fine-art/minimalist-bw' element={<MinimalistBwPage />} />
+            <Route path='/fine-art/abstract' element={<AbstractPage />} />
             <Route path='/fine-art/escape' element={<EscapePage />} />
-            <Route path='/fine-art/illusion' element={<IllusionPage />} />
-            <Route path='/fine-art/etherial' element={<EtherialPage />} />
-            <Route path='/fine-art/essential' element={<EssentialPage />} />
             <Route path='/local-art' element={<LocalArtPage />} />
 
             {/* Admin Pages */}

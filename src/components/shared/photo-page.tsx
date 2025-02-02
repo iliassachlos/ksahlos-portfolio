@@ -3,21 +3,24 @@ import { IPhoto } from '../../interfaces/global.interface';
 import Spinner from '../../components/shared/spinner';
 import InfoAlert from '../../components/shared/alerts/info-alert';
 import MasonryGrid from '../../components/shared/masonry-grid';
-import { getDocs, query, collection, orderBy } from "firebase/firestore";
-import { useQuery } from "react-query";
-import { db } from "../../firebase/config";
-import { STALE_TIME } from "../../utils/globals";
+import { getDocs, query, collection, orderBy } from 'firebase/firestore';
+import { useQuery } from 'react-query';
+import { db } from '../../firebase/config';
+import { STALE_TIME } from '../../utils/globals';
 
-function EtherialPagεe() {
-    const category: string = 'etherial';
+interface IPhotoPageProps {
+    category: string
+}
 
-    // Fetch Etherial photos
+function PhotoPage({category}: IPhotoPageProps) {
+   
+    // Fetch Photos
     const {
         data: photos,
         error,
         isLoading,
     } = useQuery<IPhoto[]>({
-        queryKey: ['etherial-photos'],
+        queryKey: [`${category}-photos`],
         queryFn: async () => {
             const querySnapshot = await getDocs(query(collection(db, category), orderBy('number', 'asc')));
             const photoData = querySnapshot.docs.map((doc) => ({
@@ -57,4 +60,4 @@ function EtherialPagεe() {
     return <Box p={2}>{photos && <MasonryGrid photos={photos} />}</Box>;
 }
 
-export default EtherialPagεe;
+export default PhotoPage;

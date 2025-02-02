@@ -1,60 +1,7 @@
-import { Box } from '@mui/material';
-import { db } from '../../firebase/config';
-import { useQuery } from 'react-query';
-import { getDocs, query, collection, orderBy } from 'firebase/firestore';
-import Spinner from '../../components/shared/spinner';
-import InfoAlert from '../../components/shared/alerts/info-alert';
-import MasonryGrid from '../../components/shared/masonry-grid';
-import { IPhoto } from '../../interfaces/global.interface';
-import { STALE_TIME } from '../../utils/globals';
+import PhotoPage from '../../components/shared/photo-page';
 
 function EscapePage() {
-    const category: string = 'escape';
-
-    // Fetch Escape photos
-    const {
-        data: photos,
-        error,
-        isLoading,
-    } = useQuery<IPhoto[]>({
-        queryKey: ['escape-photos'],
-        queryFn: async () => {
-            const querySnapshot = await getDocs(query(collection(db, category), orderBy('number', 'asc')));
-            const photoData = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            })) as IPhoto[];
-
-            return photoData.filter((photo: IPhoto) => photo.visibility === true);
-        },
-        staleTime: STALE_TIME,
-    });
-
-    if (isLoading) {
-        return (
-            <Box display='flex' justifyContent='center' alignItems='center' p={2}>
-                <Spinner />
-            </Box>
-        );
-    }
-
-    if (error) {
-        return (
-            <Box p={2}>
-                <InfoAlert text='Error loading photos.' />
-            </Box>
-        );
-    }
-
-    if (photos?.length === 0) {
-        return (
-            <Box p={2}>
-                <InfoAlert text='No photos were found' />
-            </Box>
-        );
-    }
-
-    return <Box p={2}>{photos && <MasonryGrid photos={photos} />}</Box>;
+    return <PhotoPage category='escape'/>
 }
 
 export default EscapePage;
