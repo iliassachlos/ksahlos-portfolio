@@ -57,7 +57,7 @@ function PhotoPage({category}: IPhotoPageProps) {
         );
     }
 
-    return <Box p={2} sx={{backgroundColor: 'black'}}>{photos && <MasonryGrid photos={photos} />}</Box>;
+    return <Box p={2}>{photos && <MasonryGrid photos={photos} />}</Box>;
 }
 
 export default PhotoPage;

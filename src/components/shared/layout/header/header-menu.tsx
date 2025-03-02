@@ -1,12 +1,10 @@
-// src/components/shared/layout/header/header-menu.tsx
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Container, Divider, Grid, Stack, Typography } from '@mui/material';
 import { navigationData } from '../../../../data/header-data';
-import { IHeaderData } from '../../../../interfaces/global.interface';
-import { Link } from 'react-router-dom';
+import { HeaderCategoriesEnum, IHeaderData } from '../../../../interfaces/global.interface';
 import { useDispatch } from 'react-redux';
 import { setIsHamburgerIconOpen, setIsMenuOpen } from '../../../../state/header/header-slice';
 import { useState } from 'react';
-import SubMenu from './sub-menu';
+import { Link } from 'react-router-dom';
 import { red } from '@mui/material/colors';
 
 function HeaderMenu() {
@@ -15,6 +13,12 @@ function HeaderMenu() {
     const [activeSubMenuKey, setActiveSubMenuKey] = useState<string | null>(null);
 
     const dispatch = useDispatch();
+    const generalMenus = navigationData.filter(
+        (navigationData: IHeaderData) => navigationData.category === HeaderCategoriesEnum.GENERAL
+    );
+    const galleryMenus = navigationData.filter(
+        (navigationData: IHeaderData) => navigationData.category === HeaderCategoriesEnum.GALLERY
+    );
 
     function menuItemClickHandler(menuItem: IHeaderData) {
         if (menuItem.submenu) {
@@ -29,6 +33,9 @@ function HeaderMenu() {
         dispatch(setIsHamburgerIconOpen(false));
     }
 
+    console.log('generalMenus', generalMenus);
+    console.log('galleryMenus', galleryMenus);
+
     return (
         <Box
             position='absolute'
@@ -36,59 +43,93 @@ function HeaderMenu() {
             left={0}
             height='100vh'
             zIndex={90}
-            display='flex'
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='center'
             width='100%'
             bgcolor='rgba(255,255,255,0.8)'
             overflow='hidden'
             sx={{ backdropFilter: 'blur(16px)' }}
         >
-            <Box justifyContent='center' alignItems='center' textAlign='center'>
-                {navigationData.map((item) => (
-                    <Stack key={item.title} direction='column' my={2}>
-                        {item.submenu ? (
-                            <Box
-                                onClick={() => menuItemClickHandler(item)}
-                                sx={{
-                                    '&:hover': {
-                                        cursor: 'pointer',
-                                        color: red[600],
-                                        transform: 'scale(1.05)',
-                                        transition: 'transform 0.2s ease-in, color 0.2s ease-in',
-                                    },
-                                }}
-                            >
-                                <Typography fontSize='20px'>{item.title}</Typography>
-                            </Box>
-                        ) : (
-                            <Link
-                                to={item.url!}
-                                onClick={linkClickHandler}
-                                style={{ textDecoration: 'none', color: 'black', cursor: 'pointer' }}
-                            >
-                                <Typography
-                                    fontSize='20px'
-                                    sx={{
-                                        '&:hover': {
-                                            cursor: 'pointer',
-                                            color: red[600],
-                                            transform: 'scale(1.05)',
-                                            transition: 'transform 0.2s ease-in, color 0.2s ease-in',
-                                        },
-                                    }}
+            <Container maxWidth='lg'>
+                <Stack
+                    direction='column'
+                    my={10}
+                    px={2}
+                    gap={1}
+                    data-aos='fade-down'
+                    data-aos-duration='400'
+                    data-aos-once='true'
+                >
+                    <Typography align='left' fontSize={32} fontWeight={600}>
+                        General
+                    </Typography>
+                    <Divider orientation='horizontal' />
+                    <Grid container spacing={2}>
+                        {generalMenus.map((menu: IHeaderData) => (
+                            <Grid item xs={12} sm={6} md={2} lg={4}>
+                                <Link
+                                    to={menu.url}
+                                    onClick={linkClickHandler}
+                                    style={{ textDecoration: 'none', color: 'black', cursor: 'pointer' }}
                                 >
-                                    {item.title}
-                                </Typography>
-                            </Link>
-                        )}
-                        {isSubMenuOpen && activeSubMenu && activeSubMenuKey === item.title && (
-                            <SubMenu subMenuItems={item.submenu!} />
-                        )}
-                    </Stack>
-                ))}
-            </Box>
+                                    <Typography
+                                        key={`menu-${menu.title}`}
+                                        fontSize='20px'
+                                        sx={{
+                                            '&:hover': {
+                                                cursor: 'pointer',
+                                                color: red[600],
+                                                transform: 'scale(1.05)',
+                                                transition: 'transform 0.2s ease-in, color 0.2s ease-in',
+                                            },
+                                        }}
+                                    >
+                                        {menu.title}
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Stack>
+                <Stack
+                    direction='column'
+                    px={2}
+                    gap={1}
+                    data-aos='fade-down'
+                    data-aos-duration='400'
+                    data-aos-delay='200'
+                    data-aos-once='true'
+                >
+                    <Typography align='left' fontSize={32} fontWeight={600}>
+                        Gallery
+                    </Typography>
+                    <Divider orientation='horizontal' />
+                    <Grid container spacing={2}>
+                        {galleryMenus.map((menu: IHeaderData) => (
+                            <Grid item xs={12} sm={6} md={4} lg={4}>
+                                <Link
+                                    to={menu.url}
+                                    onClick={linkClickHandler}
+                                    style={{ textDecoration: 'none', color: 'black', cursor: 'pointer' }}
+                                >
+                                    <Typography
+                                        key={`menu-${menu.title}`}
+                                        fontSize='20px'
+                                        sx={{
+                                            '&:hover': {
+                                                cursor: 'pointer',
+                                                color: red[600],
+                                                transform: 'scale(1.05)',
+                                                transition: 'transform 0.2s ease-in, color 0.2s ease-in',
+                                            },
+                                        }}
+                                    >
+                                        {menu.title}
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Stack>
+            </Container>
         </Box>
     );
 }

@@ -9,7 +9,7 @@ interface IMasonryGridProps {
     photos: IPhoto[];
 }
 
-function MasonryGrid({ photos }: IMasonryGridProps) {
+function MasonryGrid({photos}: IMasonryGridProps) {
     const dispatch = useDispatch();
 
     function selectPhotoHandler(photo: IPhoto) {
@@ -18,7 +18,7 @@ function MasonryGrid({ photos }: IMasonryGridProps) {
     }
 
     return (
-        <Masonry columns={{ xs: 2, md: 3, lg: 4, xl: 5 }} spacing={1}>
+        <Masonry columns={{xs: 2, md: 3, lg: 5}} spacing={1}>
             {photos.map((photo) => (
                 <Box key={photo.id} position='relative' onClick={() => selectPhotoHandler(photo)}>
                     <img
