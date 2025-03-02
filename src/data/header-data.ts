@@ -32,34 +32,6 @@ export const navigationData: IHeaderData[] = [
         url: '/local-art',
         category: HeaderCategoriesEnum.GALLERY
     },
-
-    // {
-    //     title: 'Collection',
-    //     submenu: [
-    //         {
-    //             title: 'Minimalist',
-    //             url: '/collection/minimalist',
-    //         },
-    //         {
-    //             title: 'Minimalist BW',
-    //             url: '/collection/minimalist-bw',
-    //         },
-    //         {
-    //             title: 'Abstract',
-    //             url: '/collection/abstract',
-    //         },
-    //         {
-    //             title: 'Local Art',
-    //             url: '/local-art',
-    //         },
-    //     ],
-    // },
-
-    {
-        title: 'Abstract',
-        url: '/abstract',
-        category: HeaderCategoriesEnum.GALLERY
-    },
     {
         title: 'Black And White',
         url: '/black-and-white',

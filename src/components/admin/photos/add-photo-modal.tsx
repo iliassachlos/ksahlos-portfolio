@@ -18,10 +18,11 @@ import InfoAlert from '../../shared/alerts/info-alert';
 import Spinner from '../../shared/spinner';
 import { setAddPhotoModalOpen } from '../../../state/admin/photo-slice';
 import ErrorAlert from '../../shared/alerts/error-alert';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/config';
 import { getDownloadURL, getStorage, ref, uploadBytes } from '@firebase/storage';
 import { PhotoCategoryEnum } from '../../../interfaces/global.enum';
+import { v4 as uuidv4 } from 'uuid';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -63,8 +64,10 @@ function AddPhotoModal() {
             return;
         }
         try {
+            const newPhotoUuid: string = uuidv4();
+
             // Save new photo to firebase storage
-            const storageRef = ref(storage, `${selectedCategory}/${newPhotoTitle}`);
+            const storageRef = ref(storage, `${selectedCategory}/${newPhotoUuid}`);
             await uploadBytes(storageRef, newPhotoFile);
             const newPhotoUrl = await getDownloadURL(storageRef);
 
@@ -78,7 +81,7 @@ function AddPhotoModal() {
             };
 
             //Save photo to firebase database
-            await addDoc(collection(db, selectedCategory), newPhoto);
+            await setDoc(doc(db, selectedCategory, newPhotoUuid), newPhoto);
         } catch (error) {
             console.error('Error adding document: ', error);
             setErrorMessage('Failed to add photo. Please try again.');
@@ -109,11 +112,32 @@ function AddPhotoModal() {
             case PhotoCategoryEnum.ABSTRACT:
                 setSelectedCategory(PhotoCategoryEnum.ABSTRACT);
                 break;
-            case PhotoCategoryEnum.ESCAPE:
-                setSelectedCategory(PhotoCategoryEnum.ESCAPE);
-                break;
             case PhotoCategoryEnum.LOCAL_ART:
                 setSelectedCategory(PhotoCategoryEnum.LOCAL_ART);
+                break;
+            case PhotoCategoryEnum.BLACK_AND_WHITE:
+                setSelectedCategory(PhotoCategoryEnum.BLACK_AND_WHITE);
+                break;
+            case PhotoCategoryEnum.CONTEMPORARY:
+                setSelectedCategory(PhotoCategoryEnum.CONTEMPORARY);
+                break;
+            case PhotoCategoryEnum.IMPRESSIONISM:
+                setSelectedCategory(PhotoCategoryEnum.IMPRESSIONISM);
+                break;
+            case PhotoCategoryEnum.LESVOS_ISLAND:
+                setSelectedCategory(PhotoCategoryEnum.LESVOS_ISLAND);
+                break;
+            case PhotoCategoryEnum.MINIMAL:
+                setSelectedCategory(PhotoCategoryEnum.MINIMAL);
+                break;
+            case PhotoCategoryEnum.SEASCAPE:
+                setSelectedCategory(PhotoCategoryEnum.SEASCAPE);
+                break;
+            case PhotoCategoryEnum.SURREALISM:
+                setSelectedCategory(PhotoCategoryEnum.SURREALISM);
+                break;
+            case PhotoCategoryEnum.WILDLIFE:
+                setSelectedCategory(PhotoCategoryEnum.WILDLIFE);
                 break;
             default:
                 setSelectedCategory(PhotoCategoryEnum.MINIMALIST);
@@ -167,8 +191,15 @@ function AddPhotoModal() {
                                     <MenuItem value={PhotoCategoryEnum.MINIMALIST}>Minimalist</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.MINIMALIST_BW}>Minimalist BW</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.ABSTRACT}>Abstract</MenuItem>
-                                    <MenuItem value={PhotoCategoryEnum.ESCAPE}>Escape</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.LOCAL_ART}>Local Art</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.BLACK_AND_WHITE}>Black And White</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.CONTEMPORARY}>Contemporary</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.IMPRESSIONISM}>Impressionism</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.LESVOS_ISLAND}>Lesvos Island</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.MINIMAL}>Minimal</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.SEASCAPE}>Seascape</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.SURREALISM}>Surrealism</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.WILDLIFE}>Wildlife</MenuItem>
                                 </Select>
                             </Stack>
 

@@ -1,13 +1,24 @@
-import { db } from "../firebase/config";
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc, writeBatch } from "firebase/firestore";
-import { IDocData, IExhibits, IExhibitsData, IPhoto } from "../interfaces/global.interface";
-import { deleteObject, getStorage, ref } from "@firebase/storage";
+import { db } from '../firebase/config';
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    getDoc,
+    getDocs,
+    orderBy,
+    query,
+    updateDoc,
+    writeBatch,
+} from 'firebase/firestore';
+import { IDocData, IExhibits, IExhibitsData, IPhoto } from '../interfaces/global.interface';
+import { deleteObject, getStorage, ref } from '@firebase/storage';
 
 export function useFirebase() {
     // Fetch photos according to category and subcategory
     async function fetchPhotos(category: string): Promise<IPhoto[]> {
         try {
-            const querySnapshot = await getDocs(query(collection(db, category), orderBy("number", "asc")));
+            const querySnapshot = await getDocs(query(collection(db, category), orderBy('number', 'asc')));
             return querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as IDocData) }));
         } catch (error) {
             console.log(error);
@@ -18,7 +29,7 @@ export function useFirebase() {
     // Fetch exhibits
     async function fetchExhibits(): Promise<IExhibits[]> {
         try {
-            const querySnapshot = await getDocs(query(collection(db, "exhibits")));
+            const querySnapshot = await getDocs(query(collection(db, 'exhibits')));
             return querySnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as IExhibitsData) }));
         } catch (error) {
             console.log(error);
@@ -37,14 +48,14 @@ export function useFirebase() {
         };
 
         // Add the new exhibition document to the "exhibits" collection
-        addDoc(collection(db, "exhibits"), newExhibition)
+        addDoc(collection(db, 'exhibits'), newExhibition)
             .then(() => {
                 // Document added successfully
-                console.log("Exhibition added successfully");
+                console.log('Exhibition added successfully');
             })
             .catch((error) => {
                 // Error occurred while adding the document
-                console.error("Error adding exhibition:", error);
+                console.error('Error adding exhibition:', error);
             });
     }
 
@@ -59,19 +70,19 @@ export function useFirebase() {
                 name: newExhibitionName,
                 coordinates: [newExhibitionLongitude, newExhibitionLatitude],
             };
-            await updateDoc(doc(db, "exhibits", exhibitionId), editedExhibition);
-            console.log("Exhibition updated successfully");
+            await updateDoc(doc(db, 'exhibits', exhibitionId), editedExhibition);
+            console.log('Exhibition updated successfully');
         } catch (error) {
-            console.error("Error updating exhibition:", error);
+            console.error('Error updating exhibition:', error);
         }
     }
 
     async function deleteExhibition(exhibitionId: string) {
         try {
-            await deleteDoc(doc(db, "exhibits", exhibitionId));
-            console.log("Exhibition deleted successfully");
+            await deleteDoc(doc(db, 'exhibits', exhibitionId));
+            console.log('Exhibition deleted successfully');
         } catch (error) {
-            console.error("Error deleting exhibition:", error);
+            console.error('Error deleting exhibition:', error);
         }
     }
 
@@ -84,7 +95,7 @@ export function useFirebase() {
         url: string,
         visibility: boolean
     ) {
-        console.log("inside addphoto");
+        console.log('inside addphoto');
 
         const newPhoto = {
             title,
@@ -95,10 +106,10 @@ export function useFirebase() {
         };
 
         try {
-            await addDoc(collection(db, "photos", category, subCategory), newPhoto);
-            console.log("Photo added successfully");
+            await addDoc(collection(db, 'photos', category, subCategory), newPhoto);
+            console.log('Photo added successfully');
         } catch (error) {
-            console.error("Error adding photo:", error);
+            console.error('Error adding photo:', error);
         }
     }
 
@@ -115,7 +126,7 @@ export function useFirebase() {
             const photoDoc = await getDoc(photoDocRef);
 
             if (!photoDoc.exists()) {
-                throw new Error("Photo not found");
+                throw new Error('Photo not found');
             }
 
             // Update the photo document without changing the file
@@ -126,7 +137,7 @@ export function useFirebase() {
                 visibility: visibility,
             });
         } catch (error) {
-            console.error("Error updating photo:", error);
+            console.error('Error updating photo:', error);
             throw error;
         }
     }
@@ -137,12 +148,12 @@ export function useFirebase() {
             const storage = getStorage();
 
             // Delete photo from Firebase Storage
-            const photoRef = ref(storage, `${selectedCategory}/${photoTitle}`);
+            const photoRef = ref(storage, `${selectedCategory}/${photoId}`);
             await deleteObject(photoRef);
 
             // Delete photo from Firestore
             await deleteDoc(doc(db, selectedCategory, photoId));
-            console.log("Photo deleted successfully");
+            console.log('Photo deleted successfully');
         } catch (error) {
             console.log(error);
         }
@@ -155,9 +166,9 @@ export function useFirebase() {
             };
 
             await updateDoc(doc(db, category, photoId), updatedPhoto);
-            console.log("Photo visibility updated successfully");
+            console.log('Photo visibility updated successfully');
         } catch (error) {
-            console.error("Error updating photo visibility:", error);
+            console.error('Error updating photo visibility:', error);
         }
     }
 
@@ -171,12 +182,11 @@ export function useFirebase() {
 
         try {
             await batch.commit();
-            console.log("Photo order updated successfully");
+            console.log('Photo order updated successfully');
         } catch (error) {
-            console.error("Error updating photo order:", error);
+            console.error('Error updating photo order:', error);
         }
     }
-
 
     return {
         // Photo fetching
@@ -193,6 +203,6 @@ export function useFirebase() {
         editPhoto,
         deletePhoto,
         changePhotoVisibility,
-        updatePhotoOrder
+        updatePhotoOrder,
     };
 }
