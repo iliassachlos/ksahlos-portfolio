@@ -18,7 +18,7 @@ import InfoAlert from '../../shared/alerts/info-alert';
 import Spinner from '../../shared/spinner';
 import { setAddPhotoModalOpen } from '../../../state/admin/photo-slice';
 import ErrorAlert from '../../shared/alerts/error-alert';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/config';
 import { getDownloadURL, getStorage, ref, uploadBytes } from '@firebase/storage';
 import { PhotoCategoryEnum } from '../../../interfaces/global.enum';

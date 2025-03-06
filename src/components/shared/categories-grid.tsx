@@ -1,5 +1,4 @@
 import { Box, Stack, Typography } from "@mui/material";
-import PhotoModal from "./modals/photo-modal";
 import { Masonry } from "@mui/lab";
 import { ICollectionCategories } from "../../interfaces/global.interface";
 import { useNavigate } from "react-router-dom";
