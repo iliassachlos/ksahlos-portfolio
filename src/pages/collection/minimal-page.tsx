@@ -1,8 +1,8 @@
 import PhotoPage from '../../components/shared/photo-page';
 import { PhotoCategoryEnum } from "../../interfaces/global.enum";
 
-function MinimalistPage() {
-    return <PhotoPage category={PhotoCategoryEnum.MINIMALIST} />
+function MinimalPage() {
+    return <PhotoPage category={PhotoCategoryEnum.MINIMAL} />
 }
 
-export default MinimalistPage;
+export default MinimalPage;

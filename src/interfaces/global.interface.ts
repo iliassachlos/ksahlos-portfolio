@@ -1,13 +1,7 @@
-export enum HeaderCategoriesEnum {
-    GENERAL = 'general',
-    GALLERY = 'gallery',
-}
-
 export interface IHeaderData {
     title: string;
     url: string;
     submenu?: IHeaderData[];
-    category: HeaderCategoriesEnum;
 }
 
 export interface IDocData {
@@ -29,5 +23,11 @@ export interface IExhibitsData {
 
 export interface IExhibits extends IExhibitsData {
     id: string;
+}
+
+export interface ICollectionCategories {
+    title: string;
+    imageUrl: string
+    redirectionUrl: string
 }
 

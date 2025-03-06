@@ -1,15 +1,17 @@
 import { Masonry } from '@mui/lab';
 import { IPhoto } from '../../interfaces/global.interface';
 import { Box, Stack, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PhotoModal from './modals/photo-modal';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../state/photo-modal/photo-modal-slice';
+import { RootState } from "../../state/store";
 
 interface IMasonryGridProps {
     photos: IPhoto[];
 }
 
 function MasonryGrid({photos}: IMasonryGridProps) {
+    const isUserLoggedIn: boolean = useSelector((state: RootState) => state.user.isLoggedIn);
     const dispatch = useDispatch();
 
     function selectPhotoHandler(photo: IPhoto) {
@@ -52,10 +54,13 @@ function MasonryGrid({photos}: IMasonryGridProps) {
                             },
                         }}
                     >
-                        <Stack direction='column'>
-                            <Typography align='center' fontWeight={500}>
+                        <Stack direction='row' gap={1}>
+                            <Typography align='center'>
                                 {photo.title}
                             </Typography>
+                            {isUserLoggedIn && <Typography fontWeight={600}>
+                                [{photo.number}]
+                            </Typography>}
                         </Stack>
                     </Box>
                 </Box>

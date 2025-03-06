@@ -6,7 +6,7 @@ import { auth } from "../firebase/config";
 import { useNavigate } from "react-router-dom";
 import ErrorAlert from "../components/shared/alerts/error-alert";
 import { useDispatch, useSelector } from "react-redux";
-import {  setIsLoggedIn } from "../state/user/user-slice";
+import { setIsLoggedIn } from "../state/user/user-slice";
 import { RootState } from "../state/store";
 
 function LoginPage() {
@@ -24,7 +24,7 @@ function LoginPage() {
 
     useEffect(() => {
         if (isUserLoggedIn) {
-            navigate("/admin", { replace: true });
+            navigate("/admin", {replace: true});
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isUserLoggedIn]);
@@ -75,6 +75,7 @@ function LoginPage() {
                     <Typography variant="h4">Admin Panel</Typography>
                     {errorMessage.length > 0 && <ErrorAlert text={errorMessage} />}
                     <TextField
+                        type="texts"
                         variant="outlined"
                         label="Email"
                         placeholder="Enter Email"
@@ -88,6 +89,7 @@ function LoginPage() {
                         }}
                     />
                     <TextField
+                        type="password"
                         variant="outlined"
                         label="Password"
                         placeholder="Enter Password"
@@ -95,7 +97,7 @@ function LoginPage() {
                         required
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button variant="contained" color="primary" fullWidth sx={{ maxWidth: 250 }} onClick={loginHandler}>
+                    <Button variant="contained" color="primary" fullWidth sx={{maxWidth: 250}} onClick={loginHandler}>
                         Login
                     </Button>
                 </Stack>

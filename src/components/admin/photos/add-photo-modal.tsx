@@ -106,9 +106,6 @@ function AddPhotoModal() {
             case PhotoCategoryEnum.MINIMALIST:
                 setSelectedCategory(PhotoCategoryEnum.MINIMALIST);
                 break;
-            case PhotoCategoryEnum.MINIMALIST_BW:
-                setSelectedCategory(PhotoCategoryEnum.MINIMALIST_BW);
-                break;
             case PhotoCategoryEnum.ABSTRACT:
                 setSelectedCategory(PhotoCategoryEnum.ABSTRACT);
                 break;
@@ -123,9 +120,6 @@ function AddPhotoModal() {
                 break;
             case PhotoCategoryEnum.IMPRESSIONISM:
                 setSelectedCategory(PhotoCategoryEnum.IMPRESSIONISM);
-                break;
-            case PhotoCategoryEnum.LESVOS_ISLAND:
-                setSelectedCategory(PhotoCategoryEnum.LESVOS_ISLAND);
                 break;
             case PhotoCategoryEnum.MINIMAL:
                 setSelectedCategory(PhotoCategoryEnum.MINIMAL);
@@ -189,13 +183,11 @@ function AddPhotoModal() {
                                     fullWidth
                                 >
                                     <MenuItem value={PhotoCategoryEnum.MINIMALIST}>Minimalist</MenuItem>
-                                    <MenuItem value={PhotoCategoryEnum.MINIMALIST_BW}>Minimalist BW</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.ABSTRACT}>Abstract</MenuItem>
-                                    <MenuItem value={PhotoCategoryEnum.LOCAL_ART}>Local Art</MenuItem>
+                                    <MenuItem value={PhotoCategoryEnum.LOCAL_ART}>Local</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.BLACK_AND_WHITE}>Black And White</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.CONTEMPORARY}>Contemporary</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.IMPRESSIONISM}>Impressionism</MenuItem>
-                                    <MenuItem value={PhotoCategoryEnum.LESVOS_ISLAND}>Lesvos Island</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.MINIMAL}>Minimal</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.SEASCAPE}>Seascape</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.SURREALISM}>Surrealism</MenuItem>
