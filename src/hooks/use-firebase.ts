@@ -47,7 +47,7 @@ export function useFirebase() {
             coordinates: [newExhibitionLongitude, newExhibitionLatitude],
         };
 
-        // Add the new exhibition document to the "exhibits" collection
+        // Add the new exhibition document to the "exhibits" collections
         addDoc(collection(db, 'exhibits'), newExhibition)
             .then(() => {
                 // Document added successfully

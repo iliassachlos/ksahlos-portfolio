@@ -6,7 +6,7 @@ import { IPhoto } from '../../../interfaces/global.interface';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../../state/photo-modal/photo-modal-slice';
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
-import {AnimatePresence, motion} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const style = {
     position: 'relative',
@@ -56,96 +56,101 @@ function PhotoModal() {
 
     return (
         <>
-        <AnimatePresence>
-
-        <Modal
-            open={isPhotoModalOpen}
-            onClose={closeModalHandler}
-            aria-labelledby='photo-modal'
-            aria-describedby='photo-modal'
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                overflow: 'auto',
-            }}
-            >
-            <Box position='relative' sx={{ ...style, maxWidth: '90vw', maxHeight: '90vh' }} data-testid='photo-modal'>
-                {selectedItem && (
-                    <>
-                        <Box
-                            display='flex'
-                            flexDirection='column'
-                            justifyContent='center'
-                            alignItems='center'
-                            height='calc(100% - 40px)'
-                            position='relative'
-                            >
-                            {isDescriptionOpen && (
-                              <motion.div
-                              initial={{ opacity: 0, scale: 0.5 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              exit={{ opacity: 0, scale: 0 }}
-                              transition={{ duration: 0.4, ease: 'easeInOut' }}
-                              style={{
-                                  position: 'absolute',
-                                  top: 0,
-                                  left: 0,
-                                  width: '100%',
-                                  height: '100%',
-                                  display: 'flex',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                  backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                                  zIndex: 1,
-                                  backdropFilter: 'blur(12px)'
-                              }}
-                          >
-                               <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
-                                   {selectedItem.desc === '' || selectedItem.desc === undefined
-                                       ? 'No description was found for this photo'
-                                       : selectedItem.desc}
-                               </Typography>
-                           </motion.div>
-                            )}
-                            <img
-                                src={selectedItem.url}
-                                alt={selectedItem.title}
-                                style={{
-                                    maxWidth: '100%', // Ensure the image does not exceed modal dimensions
-                                    maxHeight: 'calc(90vh - 40px)', // Ensure the image does not exceed modal dimensions considering the title
-                                    objectFit: objectFit,
-                                    zIndex: 0,
-                                }}
-                                onLoad={handleImageLoad}
-                            />
-                        </Box>
-                        <Box width='100%' bgcolor='white' py={1} gap={2} borderRadius='4px'>
-                            <Stack direction='row' justifyContent='space-between' alignItems='center' px={2}>
-                                <Typography textAlign='center' flexGrow={1}>
-                                    {selectedItem.title}
-                                    {isUserLoggedIn && (
-                                        <Typography component='span' mx={1} fontWeight={500}>
-                                            [ {selectedItem.number} ]
-                                        </Typography>
+            <AnimatePresence>
+                <Modal
+                    open={isPhotoModalOpen}
+                    onClose={closeModalHandler}
+                    aria-labelledby='photo-modal'
+                    aria-describedby='photo-modal'
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        overflow: 'auto',
+                        backdropFilter: 'blur(20px)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.6)'
+                    }}
+                >
+                    <Box
+                        position='relative'
+                        sx={{ ...style, maxWidth: '90vw', maxHeight: '90vh' }}
+                        data-testid='photo-modal'
+                    >
+                        {selectedItem && (
+                            <>
+                                <Box
+                                    display='flex'
+                                    flexDirection='column'
+                                    justifyContent='center'
+                                    alignItems='center'
+                                    height='calc(100% - 40px)'
+                                    position='relative'
+                                >
+                                    {isDescriptionOpen && (
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.5 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0 }}
+                                            transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                            style={{
+                                                position: 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                                                zIndex: 1,
+                                                backdropFilter: 'blur(12px)',
+                                            }}
+                                        >
+                                            <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
+                                                {selectedItem.desc === '' || selectedItem.desc === undefined
+                                                    ? 'No description was found for this photo'
+                                                    : selectedItem.desc}
+                                            </Typography>
+                                        </motion.div>
                                     )}
-                                </Typography>
-                                <Box>
-                                    <IconButton onClick={descriptionOpenHandler} color='primary' disableRipple>
-                                        <InfoIcon fontSize='small' />
-                                    </IconButton>
-                                    <IconButton onClick={closeModalHandler} color='primary' disableRipple>
-                                        <CloseIcon fontSize='small' />
-                                    </IconButton>
+                                    <img
+                                        src={selectedItem.url}
+                                        alt={selectedItem.title}
+                                        style={{
+                                            maxWidth: '100%', // Ensure the image does not exceed modal dimensions
+                                            maxHeight: 'calc(90vh - 40px)', // Ensure the image does not exceed modal dimensions considering the title
+                                            objectFit: objectFit,
+                                            zIndex: 0,
+                                        }}
+                                        onLoad={handleImageLoad}
+                                    />
                                 </Box>
-                            </Stack>
-                        </Box>
-                    </>
-                )}
-            </Box>
-        </Modal>
-    </AnimatePresence>
-    </>
+                                <Box width='100%' bgcolor='white' py={1} gap={2} borderRadius='4px'>
+                                    <Stack direction='row' justifyContent='space-between' alignItems='center' px={2}>
+                                        <Typography textAlign='center' flexGrow={1}>
+                                            {selectedItem.title}
+                                            {isUserLoggedIn && (
+                                                <Typography component='span' mx={1} fontWeight={500}>
+                                                    [ {selectedItem.number} ]
+                                                </Typography>
+                                            )}
+                                        </Typography>
+                                        <Box>
+                                            <IconButton onClick={descriptionOpenHandler} color='primary' disableRipple>
+                                                <InfoIcon fontSize='small' />
+                                            </IconButton>
+                                            <IconButton onClick={closeModalHandler} color='primary' disableRipple>
+                                                <CloseIcon fontSize='small' />
+                                            </IconButton>
+                                        </Box>
+                                    </Stack>
+                                </Box>
+                            </>
+                        )}
+                    </Box>
+                </Modal>
+            </AnimatePresence>
+        </>
     );
 }
 

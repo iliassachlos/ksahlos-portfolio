@@ -121,9 +121,6 @@ function AddPhotoModal() {
             case PhotoCategoryEnum.IMPRESSIONISM:
                 setSelectedCategory(PhotoCategoryEnum.IMPRESSIONISM);
                 break;
-            case PhotoCategoryEnum.MINIMAL:
-                setSelectedCategory(PhotoCategoryEnum.MINIMAL);
-                break;
             case PhotoCategoryEnum.SEASCAPE:
                 setSelectedCategory(PhotoCategoryEnum.SEASCAPE);
                 break;
@@ -188,7 +185,6 @@ function AddPhotoModal() {
                                     <MenuItem value={PhotoCategoryEnum.BLACK_AND_WHITE}>Black And White</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.CONTEMPORARY}>Contemporary</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.IMPRESSIONISM}>Impressionism</MenuItem>
-                                    <MenuItem value={PhotoCategoryEnum.MINIMAL}>Minimal</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.SEASCAPE}>Seascape</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.SURREALISM}>Surrealism</MenuItem>
                                     <MenuItem value={PhotoCategoryEnum.WILDLIFE}>Wildlife</MenuItem>

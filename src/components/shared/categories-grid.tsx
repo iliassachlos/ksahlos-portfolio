@@ -1,17 +1,17 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { Masonry } from "@mui/lab";
-import { ICollectionCategories } from "../../interfaces/global.interface";
-import { useNavigate } from "react-router-dom";
+import { Box, Stack, Typography } from '@mui/material';
+import { Masonry } from '@mui/lab';
+import { ICollectionsCategories } from '../../interfaces/global.interface';
+import { useNavigate } from 'react-router-dom';
 
 interface ICategoriesGridProps {
-    categories: ICollectionCategories[]
+    categories: ICollectionsCategories[];
 }
 
-function CategoriesGrid({categories}: ICategoriesGridProps) {
+function CategoriesGrid({ categories }: ICategoriesGridProps) {
     const navigate = useNavigate();
 
     return (
-        <Masonry columns={{xs: 2, md: 3, lg: 4}} spacing={1}>
+        <Masonry columns={{ xs: 2, md: 3, lg: 4, xl: 5 }} spacing={1}>
             {categories.map((category, index) => (
                 <Box key={index} position='relative' onClick={() => navigate(category.redirectionUrl)}>
                     <img
@@ -32,17 +32,13 @@ function CategoriesGrid({categories}: ICategoriesGridProps) {
                             width: '100%',
                             height: '100%',
                             backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                            backdropFilter: 'blur(4px)',
+                            backdropFilter: 'blur(6px)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            opacity: 0,
                             transition: 'opacity 0.3s',
                             cursor: 'pointer',
                             borderRadius: '4px',
-                            '&:hover': {
-                                opacity: 1,
-                            },
                         }}
                     >
                         <Stack direction='column'>
@@ -54,7 +50,7 @@ function CategoriesGrid({categories}: ICategoriesGridProps) {
                 </Box>
             ))}
         </Masonry>
-    )
+    );
 }
 
 export default CategoriesGrid;

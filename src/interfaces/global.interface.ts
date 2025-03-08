@@ -25,7 +25,7 @@ export interface IExhibits extends IExhibitsData {
     id: string;
 }
 
-export interface ICollectionCategories {
+export interface ICollectionsCategories {
     title: string;
     imageUrl: string
     redirectionUrl: string

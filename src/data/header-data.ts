@@ -11,8 +11,8 @@ export const navigationData: IHeaderData[] = [
         url: '/about',
     },
     {
-        title: 'Collection',
-        url: '/collection',
+        title: 'Collections',
+        url: '/collections',
     },
     {
         title: 'Contact',
