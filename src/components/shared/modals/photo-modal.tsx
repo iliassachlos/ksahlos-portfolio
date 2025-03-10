@@ -1,11 +1,9 @@
-import { Box, IconButton, Modal, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Modal, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { RootState } from '../../../state/store';
 import { IPhoto } from '../../../interfaces/global.interface';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../../state/photo-modal/photo-modal-slice';
-import CloseIcon from '@mui/icons-material/Close';
-import InfoIcon from '@mui/icons-material/Info';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const style = {
@@ -68,7 +66,7 @@ function PhotoModal() {
                         alignItems: 'center',
                         overflow: 'auto',
                         backdropFilter: 'blur(20px)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.6)'
+                        backgroundColor: 'rgba(255, 255, 255, 0.6)',
                     }}
                 >
                     <Box
@@ -124,26 +122,6 @@ function PhotoModal() {
                                         }}
                                         onLoad={handleImageLoad}
                                     />
-                                </Box>
-                                <Box width='100%' bgcolor='white' py={1} gap={2} borderRadius='4px'>
-                                    <Stack direction='row' justifyContent='space-between' alignItems='center' px={2}>
-                                        <Typography textAlign='center' flexGrow={1}>
-                                            {selectedItem.title}
-                                            {isUserLoggedIn && (
-                                                <Typography component='span' mx={1} fontWeight={500}>
-                                                    [ {selectedItem.number} ]
-                                                </Typography>
-                                            )}
-                                        </Typography>
-                                        <Box>
-                                            <IconButton onClick={descriptionOpenHandler} color='primary' disableRipple>
-                                                <InfoIcon fontSize='small' />
-                                            </IconButton>
-                                            <IconButton onClick={closeModalHandler} color='primary' disableRipple>
-                                                <CloseIcon fontSize='small' />
-                                            </IconButton>
-                                        </Box>
-                                    </Stack>
                                 </Box>
                             </>
                         )}

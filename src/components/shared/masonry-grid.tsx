@@ -1,6 +1,6 @@
 import { Masonry } from '@mui/lab';
 import { IPhoto } from '../../interfaces/global.interface';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Divider, Stack, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import PhotoModal from './modals/photo-modal';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../state/photo-modal/photo-modal-slice';
@@ -8,9 +8,10 @@ import { RootState } from '../../state/store';
 
 interface IMasonryGridProps {
     photos: IPhoto[];
+    category: string;
 }
 
-function MasonryGrid({ photos }: IMasonryGridProps) {
+function MasonryGrid({ photos, category }: IMasonryGridProps) {
     const isUserLoggedIn: boolean = useSelector((state: RootState) => state.user.isLoggedIn);
     const dispatch = useDispatch();
 
@@ -40,8 +41,8 @@ function MasonryGrid({ photos }: IMasonryGridProps) {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                            backdropFilter: 'blur(4px)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                            // backdropFilter: 'blur(4px)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -54,9 +55,21 @@ function MasonryGrid({ photos }: IMasonryGridProps) {
                             },
                         }}
                     >
-                        <Stack direction='row' gap={1}>
-                            <Typography align='center'>{photo.title}</Typography>
-                            {isUserLoggedIn && <Typography fontWeight={600}>[{photo.number}]</Typography>}
+                        <Stack direction='column' gap={1} width='100%' color='white'>
+                            <Typography align='center' fontSize={24}>
+                                {photo.title}
+                            </Typography>
+                            <Box width='100%' px={2}>
+                                <Divider orientation='horizontal' sx={{ bgcolor: 'white' }} />
+                            </Box>
+                            <Typography align='center' fontWeight={500}>
+                                {category.toUpperCase()}
+                            </Typography>
+                            {isUserLoggedIn && (
+                                <Typography align='center' fontWeight={600}>
+                                    [{photo.number}]
+                                </Typography>
+                            )}
                         </Stack>
                     </Box>
                 </Box>

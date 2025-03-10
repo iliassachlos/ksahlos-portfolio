@@ -8,7 +8,13 @@ function AboutSection() {
     return (
         <Element name='about'>
             <Container maxWidth='xl'>
-                <Box display='flex' alignItems='center' justifyContent='center' my={2}>
+                <Box
+                    display='flex'
+                    alignItems='center'
+                    justifyContent='center'
+                    pt={{ lg: 3, xl: 5 }}
+                    pb={{ lg: 1, xl: 2 }}
+                >
                     <Stack direction={{ xs: 'column', md: 'row' }} gap={2} width='100%'>
                         <Box width={{ lg: '60%', xl: '50%' }}>
                             <ProfileImage />

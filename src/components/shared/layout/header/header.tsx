@@ -1,58 +1,48 @@
-import { Box } from "@mui/material";
-import Hamburger from "hamburger-react";
-
-import { Link } from "react-router-dom";
-import HeaderMenu from "./header-menu";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../state/store";
-import { setIsHamburgerIconOpen, setIsMenuOpen } from "../../../../state/header/header-slice";
-import { logo } from "../../../../constants/constants";
+import { logo } from '../../../../constants/constants';
+import { Link, useLocation } from 'react-router-dom';
+import { Box } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 function Header() {
-    const isHamburgerIconOpen: boolean = useSelector((state: RootState) => state.header.isHamburgerIconOpen);
-    const isMenuOpen: boolean = useSelector((state: RootState) => state.header.isMenuOpen);
+    const location = useLocation();
 
-    const dispatch = useDispatch();
-    
+    const isHomepage: boolean = location.pathname === '/';
+
     return (
         <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            bgcolor="white"
-            position="relative"
-            width="100%"
+            display='flex'
+            justifyContent='space-between'
+            alignItems='center'
+            bgcolor='white'
+            position='relative'
+            width='100%'
             zIndex={100}
-            sx={{ height: { xs: "44px", xl: "64px" } }}
+            sx={{ height: { xs: '44px', xl: '64px' }, paddingX: '16px' }}
         >
+            {!isHomepage && (
+                <Box position='absolute' left={0} zIndex={100}>
+                    <Link to='/'>
+                        <KeyboardBackspaceIcon />
+                    </Link>
+                </Box>
+            )}
+
             {/* Ksahlos Logo */}
-            <Box flex={1} zIndex={100}>
-                <Box display="flex" justifyContent="center" alignItems="center" mt="7px">
-                    <Box
-                        sx={{
-                            "&:hover": {
-                                cursor: "pointer",
-                                transform: "scale(1.05)",
-                                transition: "transform 0.3s ease-in, color 0.3s ease-in",
-                            },
-                        }}
-                    >
-                        <Link to="/">
-                            <img src={logo} alt="logo" loading="lazy" style={{ width: "350px", height: "auto" }} />
-                        </Link>
-                    </Box>
+            <Box flex={1} zIndex={100} display='flex' justifyContent='center'>
+                <Box
+                    sx={{
+                        '&:hover': {
+                            cursor: 'pointer',
+                            transform: 'scale(1.05)',
+                            transition: 'transform 0.3s ease-in, color 0.3s ease-in',
+                        },
+                    }}
+                >
+                    <Link to='/'>
+                        <img src={logo} alt='logo' loading='lazy' style={{ width: '350px', height: 'auto' }} />
+                    </Link>
                 </Box>
             </Box>
-            <Box onClick={() => dispatch(setIsMenuOpen(!isMenuOpen))} position="absolute" right={0} zIndex={100}>
-                {/* Hamburger Menu */}
-                {/* <Hamburger
-                    size={22}
-                    toggle={() => dispatch(setIsHamburgerIconOpen(!isHamburgerIconOpen))}
-                    toggled={isHamburgerIconOpen}
-                /> */}
-            </Box>
-            {/* Header Navigation Menu */}
-            {isMenuOpen && <HeaderMenu />}
         </Box>
     );
 }

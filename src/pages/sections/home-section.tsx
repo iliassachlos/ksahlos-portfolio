@@ -2,6 +2,7 @@ import { Box, Container, Stack, Typography } from '@mui/material';
 import { TypeAnimation } from 'react-type-animation';
 import { homepagePhoto } from '../../constants/constants';
 import { Element } from 'react-scroll';
+import SectionTitle from '../../components/shared/section-title';
 
 function HomeSection() {
     return (
@@ -60,9 +61,7 @@ function HomeSection() {
                         <Box width='100%' my={4}>
                             <Container maxWidth='md'>
                                 <Stack justifyContent='center' alignItems='center' gap={1}>
-                                    <Typography variant='h1' fontSize={24} fontWeight={500}>
-                                        Welcome to my Gallery
-                                    </Typography>
+                                    <SectionTitle title='Welcome to my Gallery' fontSize={24} />
                                     <Typography variant='body1' textAlign='center'>
                                         A modern gallery that includes my work, influenced by abstract, minimalist and
                                         impressionist art styles, created using in camera and post proccessing

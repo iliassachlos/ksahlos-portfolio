@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { achievements } from '../../data/achievements-data';
 import { IAchievement } from '../../interfaces/global.interface';
+import SectionTitle from '../../components/shared/section-title';
 
 function AchievementsSection() {
     const settings = {
@@ -38,12 +39,10 @@ function AchievementsSection() {
 
     return (
         <Element name='achievements'>
-            <Container maxWidth='xl' sx={{ overflow: 'hidden', position: 'relative' }}>
-                <Box my={2} width='100%'>
+            <Box my={2} width='100%' bgcolor='white' pt={{ lg: 2, xl: 3 }} pb={{ lg: 5, xl: 6 }}>
+                <Container maxWidth='xl' sx={{ overflow: 'hidden', position: 'relative' }}>
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>
-                        <Typography variant='h1' fontSize={28} fontWeight={600}>
-                            Achievements
-                        </Typography>
+                        <SectionTitle title='Achievements' />
                         <Box width='100%' maxWidth='1200px' position='relative'>
                             <Slider {...settings}>
                                 {achievements.map((achievement: IAchievement, index: number) => (
@@ -76,8 +75,8 @@ function AchievementsSection() {
                             </Slider>
                         </Box>
                     </Stack>
-                </Box>
-            </Container>
+                </Container>
+            </Box>
         </Element>
     );
 }

@@ -9,11 +9,10 @@ import { db } from '../../firebase/config';
 import { STALE_TIME } from '../../utils/globals';
 
 interface IPhotoPageProps {
-    category: string
+    category: string;
 }
 
-function PhotoPage({category}: IPhotoPageProps) {
-   
+function PhotoPage({ category }: IPhotoPageProps) {
     // Fetch Photos
     const {
         data: photos,
@@ -57,7 +56,7 @@ function PhotoPage({category}: IPhotoPageProps) {
         );
     }
 
-    return <Box p={2}>{photos && <MasonryGrid photos={photos} />}</Box>;
+    return <Box p={2}>{photos && <MasonryGrid photos={photos} category={category} />}</Box>;
 }
 
 export default PhotoPage;

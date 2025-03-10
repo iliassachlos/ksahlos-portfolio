@@ -1,9 +1,10 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack } from '@mui/material';
 import { Element } from 'react-scroll';
 import { useEffect, useState } from 'react';
 import { IExhibits } from '../../interfaces/global.interface';
 import { useFirebase } from '../../hooks/use-firebase';
 import ExhibitsGallery from '../../components/exhibits/exhibits-gallery';
+import SectionTitle from '../../components/shared/section-title';
 
 function ExhibitionsSection() {
     const [exhibits, setExhibits] = useState<IExhibits[]>([]);
@@ -23,16 +24,21 @@ function ExhibitionsSection() {
 
     return (
         <Element name='exhibitions'>
-            <Container maxWidth='xl'>
-                <Box display='flex' alignItems='center' justifyContent='center' my={2}>
+            <Box
+                display='flex'
+                alignItems='center'
+                justifyContent='center'
+                bgcolor='white'
+                pt={{ lg: 2, xl: 3 }}
+                pb={{ lg: 5, xl: 4 }}
+            >
+                <Container maxWidth='xl'>
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>
-                        <Typography variant='h1' fontSize={28} fontWeight={600}>
-                            Upcoming Exhibitions
-                        </Typography>
+                        <SectionTitle title='Upcoming Exhibitions' />
                         <ExhibitsGallery exhibits={exhibits} />
                     </Stack>
-                </Box>
-            </Container>
+                </Container>
+            </Box>
         </Element>
     );
 }
