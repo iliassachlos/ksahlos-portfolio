@@ -19,6 +19,7 @@ export interface IPhoto extends IDocData {
 export interface IExhibitsData {
     name: string;
     coordinates: [number, number];
+    image: string;
 }
 
 export interface IExhibits extends IExhibitsData {
@@ -27,7 +28,10 @@ export interface IExhibits extends IExhibitsData {
 
 export interface ICollectionsCategories {
     title: string;
-    imageUrl: string
-    redirectionUrl: string
+    imageUrl: string;
+    redirectionUrl: string;
 }
 
+export interface IAchievement {
+    image: string;
+}

@@ -11,7 +11,7 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
     const navigate = useNavigate();
 
     return (
-        <Masonry columns={{ xs: 2, md: 3, lg: 4, xl: 5 }} spacing={1}>
+        <Masonry columns={{ xs: 2, md: 3 }} spacing={1}>
             {categories.map((category, index) => (
                 <Box key={index} position='relative' onClick={() => navigate(category.redirectionUrl)}>
                     <img
@@ -31,8 +31,7 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                            backdropFilter: 'blur(6px)',
+                            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.3) 20%, rgba(0,0,0,0) 30%)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -41,11 +40,11 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
                             borderRadius: '4px',
                         }}
                     >
-                        <Stack direction='column'>
-                            <Typography align='center' fontWeight={500}>
+                        <Box position='absolute' bottom={20}>
+                            <Typography align='center' color='secondary' fontSize={20}>
                                 {category.title}
                             </Typography>
-                        </Stack>
+                        </Box>
                     </Box>
                 </Box>
             ))}

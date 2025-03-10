@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 function ContactCard() {
     return (
         <Box mx={{ lg: 5 }}>
-            <Box mt={{ xs: 2, md: 15, xl: 22 }} mb={{ md: 5 }}>
+            <Box mb={{ md: 5 }}>
                 <Stack direction="column">
-                    <Typography align="left" variant="h5" fontWeight={500} fontSize={30}>
+                    <Typography align="left" variant="h2" fontWeight={500} fontSize={30}>
                         Contact
                     </Typography>
                     <Divider flexItem />

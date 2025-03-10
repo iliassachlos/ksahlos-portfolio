@@ -1,11 +1,10 @@
-import { Box, Chip, Container, Icon, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { Box, Container, IconButton, Paper, Stack, Typography } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 import LeafletMap from "../components/exhibits/leaflet-map";
 import { useState, useEffect } from "react";
 import { IExhibits } from "../interfaces/global.interface";
 import { useFirebase } from "../hooks/use-firebase";
 import RoomIcon from "@mui/icons-material/Room";
-import { green } from "@mui/material/colors";
 
 const ExhibitsPage = () => {
     const [exhibits, setExhibits] = useState<IExhibits[]>([]);

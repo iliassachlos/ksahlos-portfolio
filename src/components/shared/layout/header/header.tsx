@@ -6,16 +6,14 @@ import HeaderMenu from "./header-menu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../state/store";
 import { setIsHamburgerIconOpen, setIsMenuOpen } from "../../../../state/header/header-slice";
+import { logo } from "../../../../constants/constants";
 
 function Header() {
     const isHamburgerIconOpen: boolean = useSelector((state: RootState) => state.header.isHamburgerIconOpen);
     const isMenuOpen: boolean = useSelector((state: RootState) => state.header.isMenuOpen);
 
     const dispatch = useDispatch();
-
-    const logo: string =
-        "https://firebasestorage.googleapis.com/v0/b/ksahlos-portfolio.appspot.com/o/others%2Fksahlos-logo.png?alt=media&token=6edd23bd-e9d1-4972-a604-aed946d443b7";
-
+    
     return (
         <Box
             display="flex"
@@ -47,11 +45,11 @@ function Header() {
             </Box>
             <Box onClick={() => dispatch(setIsMenuOpen(!isMenuOpen))} position="absolute" right={0} zIndex={100}>
                 {/* Hamburger Menu */}
-                <Hamburger
+                {/* <Hamburger
                     size={22}
                     toggle={() => dispatch(setIsHamburgerIconOpen(!isHamburgerIconOpen))}
                     toggled={isHamburgerIconOpen}
-                />
+                /> */}
             </Box>
             {/* Header Navigation Menu */}
             {isMenuOpen && <HeaderMenu />}
