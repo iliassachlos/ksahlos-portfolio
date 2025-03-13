@@ -1,4 +1,3 @@
-import { logo } from '../../../../constants/constants';
 import { Link, useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -7,6 +6,8 @@ function Header() {
     const location = useLocation();
 
     const isHomepage: boolean = location.pathname === '/';
+    const logo: string =
+        'https://firebasestorage.googleapis.com/v0/b/ksahlos-portfolio.appspot.com/o/others%2Fksahlos-logo.png?alt=media&token=6edd23bd-e9d1-4972-a604-aed946d443b7';
 
     return (
         <Box
