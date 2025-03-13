@@ -27,21 +27,37 @@ function AboutSection() {
                                     </Typography>
                                     <Divider flexItem />
                                     <Typography align='justify' my={1}>
-                                        I don't call myself a photographer. I am an artist that uses a camera to create
-                                        Fine Art!
+                                        I do not capture what I see, but instead what I would like to see
                                     </Typography>
                                 </Box>
                                 <Box>
                                     <Stack direction='column'>
                                         <Typography align='left' variant='h2' fontWeight={500} fontSize={30}>
-                                            Contact
+                                            The artwork
                                         </Typography>
                                         <Divider flexItem />
-                                        <Typography align='justify' my={1}>
+                                        <Stack gap={1}>
+                                            <Typography align='justify' mt={1}>
+                                                - The final prints are produced in-house using pigment ink Canon and
+                                                Epson photo printers
+                                            </Typography>
+                                            <Typography align='justify'>
+                                                - The printed material used is 100% cotton museum quality canvas and
+                                                paper
+                                            </Typography>
+                                            <Typography align='justify'>- Available sizes are A4 to A0</Typography>
+                                            <Typography align='justify'>
+                                                - All artwork comes with Certificate of Authenticity
+                                            </Typography>
+                                            <Typography align='justify'>
+                                                - All artwork is signed by the artist and shipped in paper tube
+                                            </Typography>
+                                        </Stack>
+                                        {/* <Typography align='justify' my={1}>
                                             Now, as you were able to get a picture of who I am, how I work and what I
                                             can do, it is up to you to contact me and lay the foundation for a new and
                                             successful relationship.
-                                        </Typography>
+                                        </Typography> */}
                                     </Stack>
                                 </Box>
                                 <Box textAlign='left'>

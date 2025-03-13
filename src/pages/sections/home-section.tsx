@@ -63,9 +63,9 @@ function HomeSection() {
                                 <Stack justifyContent='center' alignItems='center' gap={1}>
                                     <SectionTitle title='Welcome to my Gallery' fontSize={24} />
                                     <Typography variant='body1' textAlign='center'>
-                                        A modern gallery that includes my work, influenced by abstract, minimalist and
-                                        impressionist art styles, created using in camera and post proccessing
-                                        techniques.
+                                        Based in Skala Eresos Lesvos island Greece, specializes in visual artwork
+                                        influenced by abstract, minimalist and impressionist styles, created using in
+                                        camera and post processing techniques.
                                     </Typography>
                                 </Stack>
                             </Container>

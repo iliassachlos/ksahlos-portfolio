@@ -29,8 +29,8 @@ function ExhibitionsSection() {
                 alignItems='center'
                 justifyContent='center'
                 bgcolor='white'
-                pt={{ lg: 2, xl: 3 }}
-                pb={{ lg: 5, xl: 4 }}
+                pt={{ lg: 5, xl: 7 }}
+                pb={{ lg: 7, xl: 9 }}
             >
                 <Container maxWidth='xl'>
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>

@@ -15,7 +15,7 @@ import ImpressionismPage from "./pages/collections/impressionism-page";
 import SeascapePage from "./pages/collections/seascape-page";
 import SurrealismPage from "./pages/collections/surrealism-page";
 import WildlifePage from "./pages/collections/wildlife-page";
-import MinimalistPage from "./pages/collections/minimalist-page";
+import MinimalPage from "./pages/collections/minimal-page";
 import CollectionsPage from "./pages/collections-page";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
             <Route path='/collections' element={<CollectionsPage />} />
 
             {/* Gallery Pages */}
-            <Route path='/collections/minimalist' element={<MinimalistPage />} />
+            <Route path='/collections/minimal' element={<MinimalPage />} />
             <Route path='/collections/abstract' element={<AbstractPage />} />
             <Route path='/collections/local' element={<LocalPage />} />
             <Route path='/collections/black-and-white' element={<BlackAndWhitePage />} />

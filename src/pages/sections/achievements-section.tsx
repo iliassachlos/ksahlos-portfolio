@@ -14,7 +14,7 @@ function AchievementsSection() {
     const settings = {
         dots: false,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 7,
         slidesToScroll: 1,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -37,9 +37,13 @@ function AchievementsSection() {
         ],
     };
 
+    function handleImageClick() {
+        
+    }
+
     return (
         <Element name='achievements'>
-            <Box my={2} width='100%' bgcolor='white' pt={{ lg: 2, xl: 3 }} pb={{ lg: 5, xl: 6 }}>
+            <Box my={2} width='100%' bgcolor='white' pt={{ lg: 6, xl: 8 }} pb={{ lg: 8, xl: 10}}>
                 <Container maxWidth='xl' sx={{ overflow: 'hidden', position: 'relative' }}>
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>
                         <SectionTitle title='Achievements' />
@@ -48,6 +52,7 @@ function AchievementsSection() {
                                 {achievements.map((achievement: IAchievement, index: number) => (
                                     <Box
                                         key={index}
+                                        onClick={handleImageClick}
                                         display='flex'
                                         justifyContent='center'
                                         alignItems='center'

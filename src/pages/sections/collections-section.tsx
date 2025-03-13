@@ -12,8 +12,8 @@ function CollectionsSection() {
                     display='flex'
                     alignItems='center'
                     justifyContent='center'
-                    mt={{ lg: 2, xl: 3 }}
-                    mb={{ lg: 3, xl: 5 }}
+                    mt={{ lg: 5, xl: 7 }}
+                    mb={{ lg: 5, xl: 7 }}
                 >
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2}>
                         <SectionTitle title='Print Collections' />

@@ -31,7 +31,7 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.3) 20%, rgba(0,0,0,0) 30%)',
+                            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.4) 20%, rgba(0,0,0,0) 120%)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',

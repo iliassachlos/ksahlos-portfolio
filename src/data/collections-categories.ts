@@ -3,47 +3,47 @@ import { ICollectionsCategories } from "../interfaces/global.interface";
 export const collectionsCategories: ICollectionsCategories[] = [
     {
         title: 'Abstract',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/ABSTRACT.jpg',
         redirectionUrl: '/collections/abstract'
     },
     {
         title: 'Black And White',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/BLACK WHITE.jpg',
         redirectionUrl: '/collections/black-and-white'
     },
     {
         title: 'Contemporary',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/CONTEMPORARY.jpg',
         redirectionUrl: '/collections/contemporary'
     },
     {
         title: 'Impressionism',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/IMPRESSIONISM.jpg',
         redirectionUrl: '/collections/impressionism'
     },
     {
         title: 'Local',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/LOCAL.jpg',
         redirectionUrl: '/collections/local'
     },
     {
-        title: 'Minimalist',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        redirectionUrl: '/collections/minimalist'
+        title: 'Minimal',
+        imageUrl: 'images/categories/MINIMAL.jpg',
+        redirectionUrl: '/collections/minimal'
     },
     {
         title: 'Seascape',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/SEASCAPE.jpg',
         redirectionUrl: '/collections/seascape'
     },
     {
         title: 'Surrealism',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/SURREALISM.jpg',
         redirectionUrl: '/collections/surrealism'
     },
     {
         title: 'Wildlife',
-        imageUrl: 'https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        imageUrl: 'images/categories/WILDLIFE.jpg',
         redirectionUrl: '/collections/wildlife'
     },
 

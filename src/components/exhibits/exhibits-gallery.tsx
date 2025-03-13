@@ -56,9 +56,10 @@ function ExhibitsGallery({ exhibits }: GalleryProps) {
                 component='img'
                 src={exhibits[currentIndex]?.image}
                 alt={exhibits[currentIndex]?.name}
-                width={{ xs: '100%', lg: '100%', xl: '100%' }}
-                height={{ xs: '100%', lg: '80vh', xl: '80vh' }}
+                width='100%'
+                height='auto'
                 sx={{
+                    aspectRatio: '16 / 9',
                     objectFit: 'cover',
                     opacity: isTransitioning ? 0 : 1,
                     transition: 'opacity 0.5s ease-in-out',
