@@ -1,4 +1,5 @@
-import { Box, Modal, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Modal, Typography, useMediaQuery, useTheme, IconButton } from '@mui/material';
+import { Close, Info } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { RootState } from '../../../state/store';
@@ -22,7 +23,6 @@ function PhotoModal() {
     const [objectFit, setObjectFit] = useState<'cover' | 'contain'>('cover');
     const [isDescriptionOpen, setIsDescriptionOpen] = useState<boolean>(false);
 
-    const isUserLoggedIn: boolean = useSelector((state: RootState) => state.user.isLoggedIn);
     const dispatch = useDispatch();
     const isPhotoModalOpen: boolean = useSelector((state: RootState) => state.photoModal.isOpen);
     const selectedItem: IPhoto | undefined = useSelector((state: RootState) => state.photoModal.selectedItem);
@@ -30,26 +30,19 @@ function PhotoModal() {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-    // Handles closing the modal and resetting selected item
     function closeModalHandler() {
         dispatch(setIsPhotoModalOpen(false));
         dispatch(setPhotoModalSelectedItem(undefined));
         setIsDescriptionOpen(false);
     }
 
-    // Handle description modal
     function descriptionOpenHandler() {
         setIsDescriptionOpen(!isDescriptionOpen);
     }
 
-    // Adjusts image object-fit based on natural dimensions
     function handleImageLoad(event: React.SyntheticEvent<HTMLImageElement>) {
         const { naturalWidth, naturalHeight } = event.currentTarget;
-        if (naturalWidth > naturalHeight) {
-            setObjectFit(isSmallScreen ? 'contain' : 'cover');
-        } else {
-            setObjectFit('contain');
-        }
+        setObjectFit(naturalWidth > naturalHeight ? (isSmallScreen ? 'contain' : 'cover') : 'contain');
     }
 
     return (
@@ -105,9 +98,7 @@ function PhotoModal() {
                                             }}
                                         >
                                             <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
-                                                {selectedItem.desc === '' || selectedItem.desc === undefined
-                                                    ? 'No description was found for this photo'
-                                                    : selectedItem.desc}
+                                                {selectedItem.desc ? selectedItem.desc : 'No description available'}
                                             </Typography>
                                         </motion.div>
                                     )}
@@ -115,8 +106,8 @@ function PhotoModal() {
                                         src={selectedItem.url}
                                         alt={selectedItem.title}
                                         style={{
-                                            maxWidth: '100%', // Ensure the image does not exceed modal dimensions
-                                            maxHeight: 'calc(90vh - 40px)', // Ensure the image does not exceed modal dimensions considering the title
+                                            maxWidth: '100%',
+                                            maxHeight: 'calc(90vh - 40px)',
                                             objectFit: objectFit,
                                             zIndex: 0,
                                         }}
@@ -128,6 +119,50 @@ function PhotoModal() {
                     </Box>
                 </Modal>
             </AnimatePresence>
+
+            {/* Buttons outside the modal, fixed at the bottom center */}
+            {isPhotoModalOpen && (
+                <Box
+                    position='fixed'
+                    bottom={{ lg: 5, xl: 20 }}
+                    left='50%'
+                    display='flex'
+                    justifyContent='center'
+                    alignItems='center'
+                    gap={1.5} // Slightly reduced spacing between buttons
+                    sx={{
+                        transform: 'translateX(-50%)',
+                        zIndex: 1500, // Ensures buttons remain visible above the modal
+                    }}
+                >
+                    <IconButton
+                        onClick={closeModalHandler}
+                        sx={{
+                            bgcolor: 'white',
+                            boxShadow: 1,
+                            borderRadius: '50%',
+                            width: 40, // Reduced size
+                            height: 40, // Reduced size
+                            '&:hover': { bgcolor: '#f0f0f0' },
+                        }}
+                    >
+                        <Close fontSize='small' />
+                    </IconButton>
+                    <IconButton
+                        onClick={descriptionOpenHandler}
+                        sx={{
+                            bgcolor: 'white',
+                            boxShadow: 1,
+                            borderRadius: '50%',
+                            width: 40, // Reduced size
+                            height: 40, // Reduced size
+                            '&:hover': { bgcolor: '#f0f0f0' },
+                        }}
+                    >
+                        <Info fontSize='small' />
+                    </IconButton>
+                </Box>
+            )}
         </>
     );
 }

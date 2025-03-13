@@ -60,9 +60,9 @@ function MasonryGrid({ photos, category }: IMasonryGridProps) {
                                 {photo.title}
                             </Typography>
                             <Box width='100%' px={2}>
-                                <Divider orientation='horizontal' sx={{ bgcolor: 'white' }} />
+                                <Divider orientation='horizontal' sx={{ bgcolor: 'white', height: '1px' }} />
                             </Box>
-                            <Typography align='center' fontWeight={500}>
+                            <Typography align='center' fontWeight={500} fontSize={12}>
                                 {category.toUpperCase()}
                             </Typography>
                             {isUserLoggedIn && (
