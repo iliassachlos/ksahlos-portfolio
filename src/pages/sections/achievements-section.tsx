@@ -29,7 +29,7 @@ function AchievementsSection() {
     const isXs = useMediaQuery(theme.breakpoints.down('md')); // Below 900px
 
     // Dynamically set the number of images to show based on screen size
-    const imagesToShow = isLg ? 7 : isMd ? 5 : 3;
+    const imagesToShow = isLg ? 8 : isMd ? 5 : 3;
 
     // Function to handle next button click
     const handleNext = () => {
