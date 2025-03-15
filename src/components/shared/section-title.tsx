@@ -5,7 +5,7 @@ interface ISectionTitleProps {
     fontSize?: number;
 }
 
-function SectionTitle({ title, fontSize = 28 }: ISectionTitleProps) {
+function SectionTitle({ title, fontSize = 24 }: ISectionTitleProps) {
     return (
         <Typography variant='h1' fontSize={fontSize} fontWeight={500}>
             {title}

@@ -5,6 +5,9 @@ export const achievements: IAchievement[] = [
         image: 'images/achievements/35awards Man and landscape 2023.jpg',
     },
     {
+        image: 'images/achievements/konstantinos.jpg',
+    },
+    {
         image: 'images/achievements/35awards_704_en (1).png',
     },
     {
@@ -13,6 +16,7 @@ export const achievements: IAchievement[] = [
     {
         image: 'images/achievements/35awards_804_en.png',
     },
+
     {
         image: 'images/achievements/35awards_art-2024.jpg',
     },
@@ -30,9 +34,6 @@ export const achievements: IAchievement[] = [
     },
     {
         image: 'images/achievements/konstantinos sahlos 2-3 v2.jpg',
-    },
-    {
-        image: 'images/achievements/konstantinos.jpg',
     },
     {
         image: 'images/achievements/OLYMPUS PASSION cover.jpg',

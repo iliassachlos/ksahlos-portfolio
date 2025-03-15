@@ -6,15 +6,15 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 function ContactSection() {
     return (
         <Element name='about'>
-            <Container maxWidth='xl'>
+            <Container maxWidth='md'>
                 <Stack
                     direction={{ xs: 'column', md: 'row' }}
-                    justifyContent='space-around'
+                    justifyContent='space-evenly'
                     mt={{ xs: 2, lg: 6, xl: 10 }}
                     mb={{ xs: 8, xl: 10 }}
                     gap={{ xs: 4 }}
                 >
-                    <Box textAlign='left'>
+                    <Stack>
                         <Typography fontWeight={500} fontSize={24} mb={1}>
                             Konstantinos Sahlos
                         </Typography>
@@ -26,8 +26,8 @@ function ContactSection() {
                             <Typography>+30 (0) 693 700 0041</Typography>
                             <Typography>Lesvos, Greece</Typography>
                         </Stack>
-                    </Box>
-                    <Box textAlign='left'>
+                    </Stack>
+                    <Stack>
                         <Typography fontWeight={500} fontSize={24} mb={1}>
                             Find me on Social Media
                         </Typography>
@@ -58,7 +58,7 @@ function ContactSection() {
                                 </Typography>
                             </Link>
                         </Stack>
-                    </Box>
+                    </Stack>
                     {/* <Box textAlign='left'>
                         <Typography fontWeight={500} fontSize={24} mb={1}>
                             Find me on Social Media

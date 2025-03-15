@@ -1,7 +1,7 @@
 import { Box, Container, Divider, Stack, Typography } from '@mui/material';
 import { Element } from 'react-scroll';
 import ProfileImage from '../../components/contact/profile-image';
-
+import SectionTitle from '../../components/shared/section-title';
 
 function AboutSection() {
     return (
@@ -22,9 +22,7 @@ function AboutSection() {
                         <Box width='100%' px={2}>
                             <Stack gap={4}>
                                 <Box>
-                                    <Typography align='left' variant='h2' fontWeight={500} fontSize={30}>
-                                        About
-                                    </Typography>
+                                    <SectionTitle title='The Journey' />
                                     <Divider flexItem />
                                     <Typography align='justify' my={1}>
                                         I do not capture what I see, but instead what I would like to see
@@ -32,9 +30,7 @@ function AboutSection() {
                                 </Box>
                                 <Box>
                                     <Stack direction='column'>
-                                        <Typography align='left' variant='h2' fontWeight={500} fontSize={30}>
-                                            The artwork
-                                        </Typography>
+                                        <SectionTitle title='The Artwork' />
                                         <Divider flexItem />
                                         <Stack gap={1}>
                                             <Typography align='justify' mt={1}>

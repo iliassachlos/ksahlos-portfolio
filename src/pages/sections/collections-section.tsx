@@ -16,7 +16,7 @@ function CollectionsSection() {
                     mb={{ lg: 5, xl: 7 }}
                 >
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2}>
-                        <SectionTitle title='Print Collections' />
+                        <SectionTitle title='Print Collections'/>
                         <CategoriesGrid categories={collectionsCategories} />
                     </Stack>
                 </Box>

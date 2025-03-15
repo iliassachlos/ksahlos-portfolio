@@ -35,14 +35,17 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            transition: 'opacity 0.3s',
+                            transition: 'background 300ms ease-in, opacity 0.3s',
                             cursor: 'pointer',
                             borderRadius: '4px',
+                            '&:hover': {
+                                background: 'transparent',
+                            },
                         }}
                     >
                         <Box position='absolute' bottom={20}>
                             <Typography align='center' color='secondary' fontSize={20}>
-                                {category.title}
+                                {category.title.toUpperCase()}
                             </Typography>
                         </Box>
                     </Box>

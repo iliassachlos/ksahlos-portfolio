@@ -59,7 +59,7 @@ function MasonryGrid({ photos, category }: IMasonryGridProps) {
                             <Typography align='center' fontSize={24}>
                                 {photo.title}
                             </Typography>
-                            <Box width='100%' px={2}>
+                            <Box width='100%' px={6}>
                                 <Divider orientation='horizontal' sx={{ bgcolor: 'white', height: '1px' }} />
                             </Box>
                             <Typography align='center' fontWeight={500} fontSize={12}>

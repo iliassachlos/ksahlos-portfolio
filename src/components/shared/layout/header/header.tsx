@@ -40,7 +40,13 @@ function Header() {
                     }}
                 >
                     <Link to='/'>
-                        <img src={logo} alt='logo' loading='lazy' style={{ width: '350px', height: 'auto' }} />
+                        <Box
+                            component='img'
+                            src={logo}
+                            alt='logo'
+                            loading='lazy'
+                            sx={{ width: { xs: '350px', xl: '450px' }, height: 'auto' }}
+                        />
                     </Link>
                 </Box>
             </Box>
