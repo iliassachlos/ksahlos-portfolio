@@ -1,4 +1,4 @@
-import { Box, Modal, Typography, useMediaQuery, useTheme, IconButton } from '@mui/material';
+import { Box, Modal, Typography, useMediaQuery, useTheme, IconButton, Stack } from '@mui/material';
 import { Close, Info } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -122,14 +122,14 @@ function PhotoModal() {
 
             {/* Buttons outside the modal, fixed at the bottom center */}
             {isPhotoModalOpen && (
-                <Box
+                <Stack
                     position='fixed'
-                    bottom={{ lg: 5, xl: 20 }}
+                    bottom={{ xs: 5, lg: 5, xl: 20 }}
                     left='50%'
-                    display='flex'
+                    direction='row'
                     justifyContent='center'
                     alignItems='center'
-                    gap={1.5} // Slightly reduced spacing between buttons
+                    gap={2} // Slightly reduced spacing between buttons
                     sx={{
                         transform: 'translateX(-50%)',
                         zIndex: 1500, // Ensures buttons remain visible above the modal
@@ -161,7 +161,7 @@ function PhotoModal() {
                     >
                         <Info fontSize='small' />
                     </IconButton>
-                </Box>
+                </Stack>
             )}
         </>
     );

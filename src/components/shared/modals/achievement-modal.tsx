@@ -95,7 +95,7 @@ function AchievementModal() {
             {isAchievementModalOpen && (
                 <Box
                     position='fixed'
-                    bottom={{ lg: 5, xl: 20 }}
+                    bottom={{ xs: 5, lg: 5, xl: 20 }}
                     left='50%'
                     display='flex'
                     justifyContent='center'
