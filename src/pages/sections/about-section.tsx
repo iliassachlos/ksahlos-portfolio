@@ -1,21 +1,21 @@
-import { Box, Container, Divider, Grid, Stack, Typography } from '@mui/material';
-import { Element, Link } from 'react-scroll';
+import { Box, Container, Divider, Stack, Typography } from '@mui/material';
+import { Element } from 'react-scroll';
 import ProfileImage from '../../components/contact/profile-image';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+
 
 function AboutSection() {
     return (
         <Element name='about'>
             <Container maxWidth='xl'>
-                <Box
-                    display='flex'
-                    alignItems='center'
-                    justifyContent='center'
-                    pt={{ lg: 3, xl: 5 }}
-                    pb={{ lg: 1, xl: 2 }}
-                >
-                    <Stack direction={{ xs: 'column', md: 'row' }} gap={2} width='100%'>
+                <Box pt={{ lg: 3, xl: 5 }}>
+                    <Stack
+                        direction={{ xs: 'column', md: 'row' }}
+                        alignItems='center'
+                        justifyContent='center'
+                        width='100%'
+                        gap={2}
+                        mb={4}
+                    >
                         <Box width={{ lg: '60%', xl: '50%' }}>
                             <ProfileImage />
                         </Box>
@@ -53,63 +53,6 @@ function AboutSection() {
                                                 - All artwork is signed by the artist and shipped in paper tube
                                             </Typography>
                                         </Stack>
-                                        {/* <Typography align='justify' my={1}>
-                                            Now, as you were able to get a picture of who I am, how I work and what I
-                                            can do, it is up to you to contact me and lay the foundation for a new and
-                                            successful relationship.
-                                        </Typography> */}
-                                    </Stack>
-                                </Box>
-                                <Box textAlign='left'>
-                                    <Typography fontWeight={500} fontSize={20} mb={1}>
-                                        Konstantinos Sahlos
-                                    </Typography>
-                                    <Grid container spacing={{ xs: 2, md: 1 }}>
-                                        <Grid item xs={6}>
-                                            <Typography>k.sahlos@gmail.com</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography>Eresos</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography>+30 (0) 693 700 0041</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Typography>Lesvos, Greece</Typography>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                                <Box textAlign='left' mt={{ xs: 4, md: 0 }} mb={{ xs: 8, md: 0 }}>
-                                    <Typography align='left' variant='h5' fontWeight={500} fontSize={30}>
-                                        Or Find Me On Social Media
-                                    </Typography>
-                                    <Divider flexItem />
-                                    <Stack direction='column' my={2} spacing={2}>
-                                        <Link
-                                            to='https://www.facebook.com/konstantinos.sahlos'
-                                            target='_blank'
-                                            rel='noopener noreferrer'
-                                            style={{
-                                                color: 'inherit',
-                                                textDecoration: 'none',
-                                            }}
-                                        >
-                                            <Typography display='flex' alignItems='center' gap={1}>
-                                                <FacebookIcon />
-                                                Konstantinos Sahlos
-                                            </Typography>
-                                        </Link>
-                                        <Link
-                                            to='https://www.instagram.com/ksahlos_photo/'
-                                            target='_blank'
-                                            rel='noopener noreferrer'
-                                            style={{ color: 'inherit', textDecoration: 'none' }}
-                                        >
-                                            <Typography display='flex' alignItems='center' gap={1}>
-                                                <InstagramIcon />
-                                                Ksahlos_Photo
-                                            </Typography>
-                                        </Link>
                                     </Stack>
                                 </Box>
                             </Stack>
