@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Box } from '@mui/material';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { Box, Typography } from '@mui/material';
 
 function Header() {
     const location = useLocation();
@@ -20,15 +19,27 @@ function Header() {
             zIndex={100}
             sx={{ height: { xs: '44px', xl: '64px' }, paddingX: '16px' }}
         >
-            {!isHomepage && (
-                <Box position='absolute' left={0} zIndex={100}>
-                    <Link to='/'>
-                        <KeyboardBackspaceIcon />
+            {!isHomepage ? (
+                <Box flex={1} zIndex={100} display='flex' alignItems='center'>
+                    <Link to='/' style={{ textDecoration: 'none' }}>
+                        <Typography
+                            variant='body2'
+                            sx={{
+                                color: 'black',
+                                '&:hover': {
+                                    cursor: 'pointer',
+                                    color: 'gray',
+                                    transition: 'color 0.3s ease-in',
+                                },
+                            }}
+                        >
+                            Home
+                        </Typography>
                     </Link>
                 </Box>
+            ) : (
+                <Box flex={1} />
             )}
-
-            {/* Ksahlos Logo */}
             <Box flex={1} zIndex={100} display='flex' justifyContent='center'>
                 <Box
                     sx={{
@@ -50,6 +61,7 @@ function Header() {
                     </Link>
                 </Box>
             </Box>
+            <Box flex={1} />
         </Box>
     );
 }

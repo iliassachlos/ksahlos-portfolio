@@ -2,10 +2,10 @@ import { IAchievement } from '../interfaces/global.interface';
 
 export const achievements: IAchievement[] = [
     {
-        image: 'images/achievements/35awards Man and landscape 2023.jpg',
+        image: 'images/achievements/konstantinos.jpg',
     },
     {
-        image: 'images/achievements/konstantinos.jpg',
+        image: 'images/achievements/35awards Man and landscape 2023.jpg',
     },
     {
         image: 'images/achievements/35awards_704_en (1).png',
