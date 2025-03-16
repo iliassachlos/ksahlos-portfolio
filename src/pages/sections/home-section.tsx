@@ -61,11 +61,10 @@ function HomeSection() {
                         <Box width='100%' my={4}>
                             <Container maxWidth='md'>
                                 <Stack justifyContent='center' alignItems='center' gap={1}>
-                                    <SectionTitle title='Welcome to my Gallery' fontSize={24} />
+                                    <SectionTitle title='Welcome to my World' fontSize={24} />
                                     <Typography variant='body1' textAlign='center'>
-                                        Based in Skala Eresos Lesvos island Greece, specializes in visual artwork
-                                        influenced by abstract, minimalist and impressionist styles, created using in
-                                        camera and post processing techniques.
+                                        Specializing in visual artwork influenced by abstract, minimalist and
+                                        impressionist styles, created using in camera and post processing techniques.
                                     </Typography>
                                 </Stack>
                             </Container>
