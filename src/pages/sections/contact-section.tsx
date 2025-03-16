@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Grid, Stack, Typography } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 import { Element, Link } from 'react-scroll';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';

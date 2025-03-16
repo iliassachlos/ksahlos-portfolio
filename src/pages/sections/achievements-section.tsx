@@ -26,7 +26,6 @@ function AchievementsSection() {
     const theme = useTheme();
     const isLg = useMediaQuery(theme.breakpoints.up('lg')); // 1200px and up
     const isMd = useMediaQuery(theme.breakpoints.between('md', 'lg')); // 900px to 1199px
-    const isXs = useMediaQuery(theme.breakpoints.down('md')); // Below 900px
 
     // Dynamically set the number of images to show based on screen size
     const imagesToShow = isLg ? 8 : isMd ? 5 : 3;

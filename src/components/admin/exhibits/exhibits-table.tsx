@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { IExhibits } from '../../../interfaces/global.interface';
 import InfoAlert from '../../shared/alerts/info-alert';
-import { red, green, orange } from '@mui/material/colors';
+import { red, green } from '@mui/material/colors';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';

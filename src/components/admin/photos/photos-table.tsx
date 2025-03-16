@@ -1,4 +1,4 @@
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box, Button } from '@mui/material';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box } from '@mui/material';
 import { DndContext, closestCenter } from '@dnd-kit/core';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { IPhoto } from '../../../interfaces/global.interface';
@@ -6,7 +6,7 @@ import InfoAlert from '../../shared/alerts/info-alert';
 import SortableTableRow from './sortable-table-row';
 import { RootState } from '../../../state/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsSortEditEnabled, setSortedPhotos } from '../../../state/admin/photo-slice';
+import { setSortedPhotos } from '../../../state/admin/photo-slice';
 
 interface IPhotoTableProps {
     photos: IPhoto[];

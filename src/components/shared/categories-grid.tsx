@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Masonry } from '@mui/lab';
 import { ICollectionsCategories } from '../../interfaces/global.interface';
 import { useNavigate } from 'react-router-dom';

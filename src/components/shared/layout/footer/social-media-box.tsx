@@ -1,4 +1,4 @@
-import { Box, IconButton, Stack } from '@mui/material';
+import { IconButton, Stack } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { blue, purple } from '@mui/material/colors';
