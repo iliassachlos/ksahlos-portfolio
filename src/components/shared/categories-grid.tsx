@@ -44,7 +44,7 @@ function CategoriesGrid({ categories }: ICategoriesGridProps) {
                         }}
                     >
                         <Box position='absolute' bottom={20}>
-                            <Typography align='center' color='secondary' fontSize={20}>
+                            <Typography align='center' color='secondary' fontSize={{ xs: 16, md: 20 }}>
                                 {category.title.toUpperCase()}
                             </Typography>
                         </Box>

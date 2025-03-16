@@ -15,20 +15,20 @@ function ContactSection() {
                     gap={{ xs: 4 }}
                 >
                     <Stack>
-                        <Typography fontWeight={500} fontSize={24} mb={1}>
+                        <Typography fontWeight={500} textAlign='right' fontSize={18} mb={1}>
                             Konstantinos Sahlos
                         </Typography>
-                        <Stack direction={{ xs: 'column', md: 'row' }} gap={1}>
-                            <Typography>k.sahlos@gmail.com</Typography>
-                            <Typography>Eresos</Typography>
+                        <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='right' gap={1}>
+                            <Typography fontSize={14}>k.sahlos@gmail.com</Typography>
+                            <Typography fontSize={14}>Eresos</Typography>
                         </Stack>
                         <Stack direction={{ xs: 'column', md: 'row' }} gap={1}>
-                            <Typography>+30 (0) 693 700 0041</Typography>
-                            <Typography>Lesvos, Greece</Typography>
+                            <Typography fontSize={14}>+30 693 700 0041</Typography>
+                            <Typography fontSize={14}>Lesvos, Greece</Typography>
                         </Stack>
                     </Stack>
                     <Stack>
-                        <Typography fontWeight={500} fontSize={24} mb={1}>
+                        <Typography fontWeight={500} fontSize={18} mb={1}>
                             Find me on Social Media
                         </Typography>
                         <Stack direction='column' gap={1}>
@@ -41,7 +41,7 @@ function ContactSection() {
                                     textDecoration: 'none',
                                 }}
                             >
-                                <Typography display='flex' alignItems='center' gap={1}>
+                                <Typography fontSize={14} display='flex' alignItems='center' gap={1}>
                                     <FacebookIcon />
                                     Konstantinos Sahlos
                                 </Typography>
@@ -52,7 +52,7 @@ function ContactSection() {
                                 rel='noopener noreferrer'
                                 style={{ color: 'inherit', textDecoration: 'none' }}
                             >
-                                <Typography display='flex' alignItems='center' gap={1}>
+                                <Typography fontSize={14} display='flex' alignItems='center' gap={1}>
                                     <InstagramIcon />
                                     Ksahlos_Photo
                                 </Typography>

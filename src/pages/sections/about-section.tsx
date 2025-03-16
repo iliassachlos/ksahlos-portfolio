@@ -44,10 +44,12 @@ function AboutSection() {
                                         just take photos, but used as a tool to create Fine Art. Printing is performed
                                         by me using pigment ink printers on 100% cotton museum quality paper for a
                                         highest age resistance (archival). All prints are supplied along a Certificate
-                                        of Authenticity, and shipped in most places of the world in paper tubes. Having
-                                        recently returned to live on Lesvos island, I am honored to have my work
+                                        of Authenticity, and shipped in most places of the world in paper tubes.
+                                    </Typography>
+                                    <Typography align='justify' my={1}>
+                                        Having recently returned to live on Lesvos island, I am honored to have my work
                                         displayed in MYTHOS Gallery (a hometown Gallery) as well as several other
-                                        Galleries occasionally , while planning private exhibitions in different cities
+                                        Galleries occasionally, while planning private exhibitions in different cities
                                         to showcase my work.
                                     </Typography>
                                 </Box>
