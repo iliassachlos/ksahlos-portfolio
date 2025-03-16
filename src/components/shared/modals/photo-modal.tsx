@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { RootState } from '../../../state/store';
 import { IPhoto } from '../../../interfaces/global.interface';
 import { setIsPhotoModalOpen, setPhotoModalSelectedItem } from '../../../state/photo-modal/photo-modal-slice';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const style = {
     position: 'relative',
@@ -47,78 +46,74 @@ function PhotoModal() {
 
     return (
         <>
-            <AnimatePresence>
-                <Modal
-                    open={isPhotoModalOpen}
-                    onClose={closeModalHandler}
-                    aria-labelledby='photo-modal'
-                    aria-describedby='photo-modal'
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        overflow: 'auto',
-                        backdropFilter: 'blur(20px)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                    }}
+            {/* <AnimatePresence> */}
+            <Modal
+                open={isPhotoModalOpen}
+                onClose={closeModalHandler}
+                aria-labelledby='photo-modal'
+                aria-describedby='photo-modal'
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    overflow: 'auto',
+                    backdropFilter: 'blur(20px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                }}
+            >
+                <Box
+                    position='relative'
+                    sx={{ ...style, maxWidth: '90vw', maxHeight: '90vh' }}
+                    data-testid='photo-modal'
                 >
-                    <Box
-                        position='relative'
-                        sx={{ ...style, maxWidth: '90vw', maxHeight: '90vh' }}
-                        data-testid='photo-modal'
-                    >
-                        {selectedItem && (
-                            <>
-                                <Box
-                                    display='flex'
-                                    flexDirection='column'
-                                    justifyContent='center'
-                                    alignItems='center'
-                                    height='calc(100% - 40px)'
-                                    position='relative'
-                                >
-                                    {isDescriptionOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.5 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0 }}
-                                            transition={{ duration: 0.4, ease: 'easeInOut' }}
-                                            style={{
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                                                zIndex: 1,
-                                                backdropFilter: 'blur(12px)',
-                                            }}
-                                        >
-                                            <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
-                                                {selectedItem.desc ? selectedItem.desc : 'No description available'}
-                                            </Typography>
-                                        </motion.div>
-                                    )}
-                                    <img
-                                        src={selectedItem.url}
-                                        alt={selectedItem.title}
+                    {selectedItem && (
+                        <>
+                            <Box
+                                display='flex'
+                                flexDirection='column'
+                                justifyContent='center'
+                                alignItems='center'
+                                height='calc(100% - 40px)'
+                                position='relative'
+                            >
+                                {isDescriptionOpen && (
+                                    <Box
                                         style={{
-                                            maxWidth: '100%',
-                                            maxHeight: 'calc(90vh - 40px)',
-                                            objectFit: objectFit,
-                                            zIndex: 0,
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                                            zIndex: 1,
+                                            backdropFilter: 'blur(12px)',
                                         }}
-                                        onLoad={handleImageLoad}
-                                    />
-                                </Box>
-                            </>
-                        )}
-                    </Box>
-                </Modal>
-            </AnimatePresence>
+                                    >
+                                        <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
+                                            {selectedItem.desc ? selectedItem.desc : 'No description available'}
+                                        </Typography>
+                                    </Box>
+                                )}
+                                <img
+                                    src={selectedItem.url}
+                                    alt={selectedItem.title}
+                                    style={{
+                                        maxWidth: '100%',
+                                        maxHeight: 'calc(90vh - 40px)',
+                                        objectFit: objectFit,
+                                        zIndex: 0,
+                                    }}
+                                    onLoad={handleImageLoad}
+                                />
+                            </Box>
+                        </>
+                    )}
+                </Box>
+            </Modal>
+            {/* </AnimatePresence> */}
 
             {/* Buttons outside the modal, fixed at the bottom center */}
             {isPhotoModalOpen && (

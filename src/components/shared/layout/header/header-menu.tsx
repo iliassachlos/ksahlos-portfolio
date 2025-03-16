@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIsHamburgerIconOpen, setIsMenuOpen } from '../../../../state/header/header-slice';
 import { useState } from 'react';
-import SubMenu from './sub-menu';
+
 import { red } from '@mui/material/colors';
 
 function HeaderMenu() {
@@ -82,9 +82,6 @@ function HeaderMenu() {
                                     {item.title}
                                 </Typography>
                             </Link>
-                        )}
-                        {isSubMenuOpen && activeSubMenu && activeSubMenuKey === item.title && (
-                            <SubMenu subMenuItems={item.submenu!} />
                         )}
                     </Stack>
                 ))}
