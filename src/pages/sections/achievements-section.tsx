@@ -49,7 +49,7 @@ function AchievementsSection() {
     return (
         <>
             <Element name='achievements'>
-                <Box my={2} width='100%' bgcolor='white' pt={{ lg: 6, xl: 8 }} pb={{ lg: 8, xl: 10 }}>
+                <Box my={2} width='100%' bgcolor='white' pt={{ xs: 5, lg: 6, xl: 8 }} pb={{ lg: 8, xl: 10 }}>
                     <Container maxWidth='xl' sx={{ overflow: 'hidden', position: 'relative' }}>
                         <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>
                             <SectionTitle title='Achievements' />

@@ -15,7 +15,7 @@ function ContactSection() {
                     gap={{ xs: 4 }}
                 >
                     <Stack>
-                        <Typography fontWeight={500} textAlign='right' fontSize={18} mb={1}>
+                        <Typography fontWeight={500} textAlign={{ xs: 'left', md: 'right' }} fontSize={18} mb={1}>
                             Konstantinos Sahlos
                         </Typography>
                         <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='right' gap={1}>
