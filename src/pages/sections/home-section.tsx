@@ -3,6 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { homepagePhoto } from '../../constants/constants';
 import { Element } from 'react-scroll';
 import SectionTitle from '../../components/shared/section-title';
+import { grey } from '@mui/material/colors';
 
 function HomeSection() {
     return (
@@ -49,6 +50,7 @@ function HomeSection() {
                                     fontSize={12}
                                     data-aos='zoom-in-up'
                                     data-aos-delay='100'
+                                    color={grey[800]}
                                 >
                                     <TypeAnimation
                                         sequence={['Timeless steps beyond reality']}

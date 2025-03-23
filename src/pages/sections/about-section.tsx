@@ -8,14 +8,7 @@ function AboutSection() {
         <Element name='about'>
             <Container maxWidth='xl'>
                 <Box pt={{ lg: 3, xl: 5 }}>
-                    <Stack
-                        direction={{ xs: 'column', md: 'row' }}
-                        alignItems='center'
-                        justifyContent='center'
-                        width='100%'
-                        gap={2}
-                        mb={4}
-                    >
+                    <Stack direction={{ xs: 'column', md: 'row' }} justifyContent='center' width='100%' gap={2} mb={4}>
                         <Box width={{ lg: '60%', xl: '50%' }}>
                             <ProfileImage />
                         </Box>
@@ -26,16 +19,8 @@ function AboutSection() {
                                     <Divider flexItem sx={{ my: 1 }} />
                                     <Typography align='justify' my={1}>
                                         My name is Konstantinos Sahlos born in Skala Eresos Lesvos island Greece. The
-                                        interest for photography, seascape and nature photography to be exact, started
-                                        in 1977 and it was then when I got my first 'professional' camera, a Russian
-                                        ZENIT. Later and while in College in Crete studying Business Administration, my
-                                        passion led me to acquire the all new back then Canon A1, a more sophisticated
-                                        camera at the time. In 1982 I found myself in the USA studying Information
-                                        Systems, and at the same time taking part-time courses on darkroom and Film
-                                        Development. A few years later after all my equipment was stolen, my hobby went
-                                        on a pause. In the year 2001 my interest in photography as a non-professional at
-                                        the time had started growing again along the digital era , using several camera
-                                        brands as Olympus, Nikon and Sony today.
+                                        interest, for seascape and nature photography specifically, started in 1977 and
+                                        it was then when I got my first professional camera.
                                     </Typography>
                                     <Typography align='justify' my={1}>
                                         The past years, I have been greatly influenced by minimalism, abstract and
@@ -51,6 +36,19 @@ function AboutSection() {
                                         displayed in MYTHOS Gallery (a hometown Gallery) as well as several other
                                         Galleries occasionally, while planning private exhibitions in different cities
                                         to showcase my work.
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <SectionTitle title='Events / Exhibitions' />
+                                    <Divider flexItem sx={{ my: 1 }} />
+                                    <Typography align='justify' my={1}>
+                                        - PHOTOVISION: October 11-13 2024, Zappeion Hall, Athens
+                                    </Typography>
+                                    <Typography align='justify' my={1}>
+                                        - ISOLAMENTO: September 12-21 2024, MYRO Gallery, Thessaloniki
+                                    </Typography>
+                                    <Typography align='justify' my={1}>
+                                        - ONEIRIC IMAGES: October 10-19 2024, MYRO Gallery, Thessaloniki
                                     </Typography>
                                 </Box>
                             </Stack>

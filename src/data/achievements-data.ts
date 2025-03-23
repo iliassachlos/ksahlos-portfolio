@@ -17,9 +17,6 @@ export const achievements: IAchievement[] = [
         image: 'images/achievements/UCP June 2022.jpg',
     },
     {
-        image: 'images/achievements/35awards_746_en.png',
-    },
-    {
         image: 'images/achievements/35awards_804_en.png',
     },
     {

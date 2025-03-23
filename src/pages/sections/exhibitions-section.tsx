@@ -34,7 +34,7 @@ function ExhibitionsSection() {
             >
                 <Container maxWidth='xl'>
                     <Stack direction='column' justifyContent='center' alignItems='center' gap={2} width='100%'>
-                        <SectionTitle title='Upcoming Exhibitions' />
+                        <SectionTitle title='Upcoming Solo Exhibitions' />
                         <ExhibitsGallery exhibits={exhibits} />
                     </Stack>
                 </Container>
