@@ -55,22 +55,24 @@ function AchievementsSection() {
                             <SectionTitle title='Achievements' />
                             <Box width='100%' maxWidth='1200px' position='relative'>
                                 {/* Left Arrow */}
-                                <IconButton
+                                <Box
                                     onClick={handlePrevious}
                                     sx={{
                                         position: 'absolute',
                                         top: '50%',
-                                        left: '-60px',
+                                        left: {xs: '0px', lg: '-60px'},
+                                        backgroundColor: {xs: 'rgba(211, 211, 211, 0.7)', lg: 'transparent'},
                                         transform: 'translateY(-50%)',
                                         cursor: 'pointer',
                                         zIndex: 2,
                                         fontSize: 24,
-                                        borderRadius: '50%',
-                                        padding: '5px',
+                                        borderRadius: 'calc(infinity * 1px)',
+                                        paddingX: '4px',
+                                        paddingTop: '6px',
                                     }}
                                 >
-                                    <ArrowBackIosIcon />
-                                </IconButton>
+                                    <ArrowBackIosIcon style={{marginLeft: '8px'}}/>
+                                </Box>
 
                                 {/* Carousel Container */}
                                 <Box
@@ -88,7 +90,7 @@ function AchievementsSection() {
                                     <Box
                                         sx={{
                                             display: 'flex',
-                                            gap: 4, // Increased gap for larger images
+                                            gap: {xs: 3,lg: 4}, // Increased gap for larger images
                                             transform: `translateX(-${currentIndex * (100 / imagesToShow)}%)`, // Slide animation
                                             transition: 'transform 0.3s ease-in-out', // Faster transition
                                         }}
@@ -124,22 +126,24 @@ function AchievementsSection() {
                                 </Box>
 
                                 {/* Right Arrow */}
-                                <IconButton
+                                <Box
                                     onClick={handleNext}
                                     sx={{
                                         position: 'absolute',
                                         top: '50%',
-                                        right: '-60px',
+                                        right: {xs: '0px', lg: '-60px'},
+                                        backgroundColor: {xs: 'rgba(211, 211, 211, 0.7)', lg: 'transparent'},
                                         transform: 'translateY(-50%)',
                                         cursor: 'pointer',
                                         zIndex: 2,
                                         fontSize: 24,
-                                        borderRadius: '50%',
-                                        padding: '5px',
+                                        borderRadius: 'calc(infinity * 1px)',
+                                        paddingX: '8px',
+                                        paddingTop: '6px',
                                     }}
                                 >
                                     <ArrowForwardIosIcon />
-                                </IconButton>
+                                </Box>
                             </Box>
                         </Stack>
                     </Container>
