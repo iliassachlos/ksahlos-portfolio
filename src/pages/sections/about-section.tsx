@@ -42,6 +42,9 @@ function AboutSection() {
                                     <SectionTitle title='Events / Exhibitions' />
                                     <Divider flexItem sx={{ my: 1 }} />
                                     <Typography align='justify' my={1}>
+                                        - LESVOS ARTISTS: May 9-18 2025, Panellinion, Mytilene
+                                    </Typography>
+                                    <Typography align='justify' my={1}>
                                         - PHOTOVISION: October 11-13 2024, Zappeion Hall, Athens
                                     </Typography>
                                     <Typography align='justify' my={1}>
