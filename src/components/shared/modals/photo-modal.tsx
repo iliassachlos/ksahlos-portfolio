@@ -77,25 +77,39 @@ function PhotoModal() {
                                 position='relative'
                             >
                                 {isDescriptionOpen && (
+                                   <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                                        zIndex: 1,
+                                        backdropFilter: 'blur(12px)',
+                                        padding: 1,
+                                        boxSizing: 'border-box',
+                                    }}
+                                >
                                     <Box
-                                        style={{
-                                            position: 'absolute',
-                                            top: 0,
-                                            left: 0,
-                                            width: '100%',
-                                            height: '100%',
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                                            zIndex: 1,
-                                            backdropFilter: 'blur(12px)',
+                                        sx={{
+                                            maxHeight: '100%',
+                                            maxWidth: '80%',
+                                            overflowY: 'auto',
                                         }}
                                     >
-                                        <Typography textAlign='center' fontSize={16} color='black' maxWidth='80%'>
+                                        <Typography
+                                            textAlign='justify'
+                                            fontSize={16}
+                                            color='black'
+                                        >
                                             {selectedItem.desc ? selectedItem.desc : 'No description available'}
                                         </Typography>
                                     </Box>
+                                </Box>
                                 )}
                                 <img
                                     src={selectedItem.url}
